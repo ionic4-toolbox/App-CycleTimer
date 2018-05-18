@@ -1,0 +1,56 @@
+import { BrowserModule } from '@angular/platform-browser';
+import { ErrorHandler, NgModule } from '@angular/core';
+import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { SplashScreen } from '@ionic-native/splash-screen';
+import { StatusBar } from '@ionic-native/status-bar';
+
+import { MyApp } from './app.component';
+import { HomePage } from '../pages/home/home';
+import { ConfigProvider } from '../providers/config/config';
+import { UtilitiesProvider } from '../providers/utilities/utilities';
+import { BaseProvider } from '../providers/base/base';
+import { DatabaseProvider } from '../providers/database/database';
+import {HttpModule} from "@angular/http";
+import { LoginProvider } from '../providers/login/login';
+import { NewStudyProvider } from '../providers/new-study/new-study';
+import { SummaryProvider } from '../providers/summary/summary';
+import { StudyProvider } from '../providers/study/study';
+import { ConstantProvider } from '../providers/constant/constant';
+import { NewTemplateProvider } from '../providers/new-template/new-template';
+import { StudyTypeProvider } from '../providers/study-type/study-type';
+import { HomeProvider } from '../providers/home/home';
+
+@NgModule({
+  declarations: [
+    MyApp,
+    HomePage
+  ],
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(MyApp),
+    HttpModule
+  ],
+  bootstrap: [IonicApp],
+  entryComponents: [
+    MyApp,
+    HomePage
+  ],
+  providers: [
+    StatusBar,
+    SplashScreen,
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    ConfigProvider,
+    UtilitiesProvider,
+    BaseProvider,
+    DatabaseProvider,
+    LoginProvider,
+    NewStudyProvider,
+    SummaryProvider,
+    StudyProvider,
+    ConstantProvider,
+    NewTemplateProvider,
+    StudyTypeProvider,
+    HomeProvider
+  ]
+})
+export class AppModule {}
