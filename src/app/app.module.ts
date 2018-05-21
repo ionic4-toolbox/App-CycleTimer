@@ -19,11 +19,19 @@ import { ConstantProvider } from '../providers/constant/constant';
 import { NewTemplateProvider } from '../providers/new-template/new-template';
 import { StudyTypeProvider } from '../providers/study-type/study-type';
 import { HomeProvider } from '../providers/home/home';
+import { LoginPage } from '../pages/login/login';
+import { StudyTypePage } from '../pages/study-type/study-type';
+import { NewTemplatePage } from '../pages/new-template/new-template';
+import { BaseTemplatePage } from '../pages/base-template/base-template';
 
 @NgModule({
   declarations: [
     MyApp,
-    HomePage
+    LoginPage,
+    HomePage,
+    StudyTypePage,
+    NewTemplatePage,
+    BaseTemplatePage
   ],
   imports: [
     BrowserModule,
@@ -33,7 +41,11 @@ import { HomeProvider } from '../providers/home/home';
   bootstrap: [IonicApp],
   entryComponents: [
     MyApp,
-    HomePage
+    LoginPage,
+    HomePage,
+    StudyTypePage,
+    NewTemplatePage,
+    BaseTemplatePage
   ],
   providers: [
     StatusBar,

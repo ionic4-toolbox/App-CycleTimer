@@ -1,5 +1,6 @@
-import { HttpClient } from '@angular/common/http';
+import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
+import { Template } from '../../model/Template';
 
 /*
   Generated class for the ConstantProvider provider.
@@ -10,8 +11,19 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class ConstantProvider {
 
-  constructor(public http: HttpClient) {
+  public ListTemplateType = [
+    {TemplateName: 'Dozing'},
+    {TemplateName: 'Hauling Unit'},
+    {TemplateName: 'Loading Unit'},
+    {TemplateName: 'Hauling Unit (Full Cycle)'},
+    {TemplateName: 'Trenching/Excavating'},
+    {TemplateName: 'Drills'},
+  ]
+
+  public StudyDate = new Date();
+  
+
+  constructor(public http: Http) {
     console.log('Hello ConstantProvider Provider');
   }
-
 }

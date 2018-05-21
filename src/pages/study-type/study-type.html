@@ -7,12 +7,28 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>studyType</ion-title>
+    <ion-title>Choose Study Type</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <ion-list radio-group>
+    <ion-list>
+      <ion-row>
+        <ion-item col-7>
+            Preset Templates
+        </ion-item>
+      
+        <ion-item col-5>
+          <button ion-button round outline (click)="onclickNewTemplate()">New Template</button>
+        </ion-item>
+      </ion-row>
+    </ion-list>
 
+    <button ion-item *ngFor="let item of listStudyType" (click)="itemTapped($event, item)">
+      {{item.TemplateName}}
+    </button>
+  </ion-list>
 </ion-content>

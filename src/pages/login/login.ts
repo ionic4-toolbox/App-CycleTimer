@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { HomePage } from '../home/home';
 
 /**
  * Generated class for the LoginPage page.
@@ -15,11 +16,23 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class LoginPage {
 
+
+  backgrounds = [
+    'assets/imgs/background/background-1.jpg',
+    'assets/imgs/background/background-2.jpg',
+    'assets/imgs/background/background-3.jpg',
+    'assets/imgs/background/background-4.jpg'
+  ];
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad LoginPage');
+  }
+
+  doLogin(){
+    this.navCtrl.push(HomePage)
   }
 
 }
