@@ -18,16 +18,38 @@ export class DatabaseProvider {
 
   // set data template
   setTemplate(data){
-    localStorage.setItem('list_template',data);
+    localStorage.setItem('template',data);
   }
 
   getListTemplate(){
-    if(localStorage.getItem('list_template') == null){
+    if(localStorage.getItem('template') == null){
         this.setTemplate(JSON.stringify(this.constant.ListTemplateType))
         return this.constant.ListTemplateType;
     }
 
-    return JSON.parse(localStorage.getItem('list_template'));
+    return JSON.parse(localStorage.getItem('template'));
+  }
+
+  addNewTemplate(entity){
+    let itemName = item.TemplateName;
+    //
+
+    let listTemplate = this.getListTemplate();
+
+    if (listTemplate == null){
+      listTemplate = [];
+    }
+
+    for (let i=0; i< listTemplate.length; i++){
+      if (listTemplate[i].TemplateName == itemName){
+        return false;
+      }
+    }
+
+    listTemplate.push(entity);
+    this.setTemplate(JSON.stringify(listTemplate));
+
+    return true;
   }
 
   //*********************** TABLE MATERIAL *********************************
@@ -46,20 +68,6 @@ export class DatabaseProvider {
   }
 
   //********************************* Table STUDY ***********************************
-
-  // set data study date
-  setStudyDate(data){
-    localStorage.setItem('study_date', data);
-  }
-
-  getStudyDate(){
-    if(localStorage.getItem('study_date') == null){
-      this.setStudyDate(JSON.stringify(this.constant.StudyDate))
-      return this.constant.StudyDate;
-    }
-
-    return JSON.parse(localStorage.getItem('study_date'))
-  }
 
   saveStudy(entity){
     localStorage.setItem('study',entity);

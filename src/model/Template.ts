@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import {Section} from "./Section";
+import {List} from "ionic-angular";
 
 /*
  Generated class for the BaseProvider provider.
@@ -9,6 +11,10 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class Template {
   public TemplateName : string;
+  public TimeUnits : string;
+  public UnitsOfMeasure : string;
+  public ListSections : List<Section>
+
   constructor() {
     console.log('Hello BaseProvider Provider');
   }

@@ -1,5 +1,6 @@
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
+import {DatabaseProvider} from "../database/database";
 
 /*
   Generated class for the NewTemplateProvider provider.
@@ -10,8 +11,23 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class NewTemplateProvider {
 
-  constructor(public http: Http) {
+  constructor(public http: Http, private database: DatabaseProvider) {
     console.log('Hello NewTemplateProvider Provider');
+  }
+
+  addNewTemplate(entity){
+    return this.database.addNewTemplate(entity);
+  }
+
+  getTemplateByName(templateName){
+
+  }
+  getAllTemplate(){
+    return this.database.getListTemplate();
+  }
+
+  saveTemplate(entity){
+    this.database.setTemplate(entity);
   }
 
 }
