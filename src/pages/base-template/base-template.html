@@ -13,8 +13,8 @@
 </ion-header>
 
 
-<ion-content padding>
-  <form #form="ngForm" (ngSubmit)="saveDataStudy(form)" novalidate>
+<ion-content padding dark>
+  <form #form="ngForm" (ngSubmit)="beginStudy(form)" novalidate>
     <ion-card>
       <ion-grid>
         <ion-row>
@@ -22,7 +22,7 @@
             <ion-label>Study Name</ion-label>
           </ion-col>
           <ion-col col-8>
-            <ion-input class="borderInput" [(ngModel)]="form.name_study" name="name_study" required></ion-input>
+            <ion-input class="borderInput" [(ngModel)]="form.StudyName" name="StudyName" required></ion-input>
           </ion-col>
         </ion-row>
 
@@ -33,7 +33,7 @@
         </ion-row>
         <ion-row>
           <ion-col>
-            <ion-textarea class="borderInput" [(ngModel)]="form.description" name="description" rows="3"></ion-textarea>
+            <ion-textarea class="borderInput" [(ngModel)]="form.StudyDescription" name="StudyDescription" rows="3"></ion-textarea>
           </ion-col>
         </ion-row>
 
@@ -42,7 +42,7 @@
             <ion-label>Prepared For</ion-label>
           </ion-col>
           <ion-col col-8>
-            <ion-input class="borderInput" [(ngModel)]="form.prepared_for" name="prepared_for" required></ion-input>
+            <ion-input class="borderInput" [(ngModel)]="form.PreparedFor" name="PreparedFor" required></ion-input>
           </ion-col>
         </ion-row>
 
@@ -51,7 +51,7 @@
             <ion-label>Prepared By</ion-label>
           </ion-col>
           <ion-col col-8>
-            <ion-input class="borderInput" [(ngModel)]="form.prepared_by" name="prepared_by" required></ion-input>
+            <ion-input class="borderInput" [(ngModel)]="form.PreparedBy" name="PreparedBy" required></ion-input>
           </ion-col>
         </ion-row>
 
@@ -60,7 +60,7 @@
             <ion-label>Study Date</ion-label>
           </ion-col>
           <ion-col col-8>
-            <ion-label>{{studyDate}}</ion-label>
+            <ion-datetime displayFormat="MM/DD/YYYY" [(ngModel)]="studyDate" name="StudyDate" disabled="true"></ion-datetime>
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -68,6 +68,78 @@
 
     <ion-card>
 
+      <ion-grid>
+
+        <ion-row>
+          <ion-col col-4>
+            <ion-label>Material Type</ion-label>
+          </ion-col>
+          <ion-col col-8>
+            <ion-select class="borderInput" [(ngModel)]="form.MaterialType" name="MaterialType">
+              <ion-option *ngFor="let material of materialType">{{material.MaterialName}}</ion-option>
+            </ion-select>
+          </ion-col>          
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-label>Material Density</ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-row col-6>
+            <ion-col>
+              <ion-label>Lbs/BCY</ion-label>
+            </ion-col>
+            <ion-col>
+              <ion-input class="borderInput" [(ngModel)]="form.MaterialDensityLbsBcy" name="MaterialDensityLbsBcy" type="number"></ion-input>
+            </ion-col>
+          </ion-row>
+
+          <ion-row col-6>
+            <ion-col>
+              <ion-label>Lbs/BCY</ion-label>
+            </ion-col>
+            <ion-col>
+              <ion-input class="borderInput" [(ngModel)]="form.MaterialDensityLbsLcy" name="MaterialDensityLbsLcy" type="number"></ion-input>
+            </ion-col>
+          </ion-row>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <ion-label>Blast (Reference Only)</ion-label>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-textarea class="borderInput" [(ngModel)]="form.Blast" name="Blast" rows="2"></ion-textarea>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col col-6>
+              <ion-label>Loading Unit</ion-label>
+              <ion-input class="borderInput" [(ngModel)]="form.LoadingUnit" name="LoadingUnit"></ion-input>
+          </ion-col>
+
+          <ion-col col-6>
+              <ion-label>Blade Type</ion-label>
+              <ion-input class="borderInput" [(ngModel)]="form.BladeType" name="BladeType"></ion-input>
+          </ion-col>
+        </ion-row>
+
+      </ion-grid>
     </ion-card>
+    <ion-card>
+      <ion-list>
+        <ion-list-header>
+          Cycle Segments
+        </ion-list-header>
+          <ion-item *ngFor="let segments of listSegments">
+            <ion-label>{{segments.name}}</ion-label>
+          </ion-item>
+      </ion-list>
+    </ion-card>
+    <button ion-button round type="submit"> Begin Study </button>
   </form>
 </ion-content>

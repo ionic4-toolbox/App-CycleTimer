@@ -28,6 +28,23 @@ export class ConstantProvider {
 
   public StudyDate = new Date().toISOString();
 
+  public strBeginStudyErr  = {
+      title: 'Invalid some Field',
+      subTitle: 'Please enter full field !'
+  };
+  public strAddItemErr = {
+      title: 'Add Item Failed',
+      subTitle: 'Duplicate Item Name in Your Db !'
+  }
+
+  public ListSegments = [
+    {name: 'Begin Load'},
+    {name: 'Begin Carry'},
+    {name: 'Leave Pit'},
+    {name: 'ReEnter Pit'},
+
+  ]
+
 
   constructor(public http: Http) {
     console.log('Hello ConstantProvider Provider');

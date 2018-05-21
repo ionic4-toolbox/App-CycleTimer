@@ -14,21 +14,21 @@
 
 
 <ion-content padding>
-  <ion-list radio-group>
+  <ion-card>
     <ion-list>
       <ion-row>
-        <div col-7>
+        <ion-col col-7>
           <label class="setText"> Preset Templates </label>
-        </div>
-      
-        <div col-5>
+        </ion-col>
+        
+        <ion-col col-5>
           <button ion-button small round outline (click)="onclickNewTemplate()">New Template</button>
-        </div>
+        </ion-col>
       </ion-row>
-    </ion-list>
 
-    <button ion-item *ngFor="let item of listStudyType" (click)="itemTapped($event, item)">
-      {{item.TemplateName}}
-    </button>
-  </ion-list>
+      <button ion-item *ngFor="let item of listStudyType" (click)="itemTapped($event, item)">
+        {{item.TemplateName}}
+      </button>
+    </ion-list>
+  </ion-card>
 </ion-content>

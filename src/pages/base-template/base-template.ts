@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import {AlertController, IonicPage, NavController, NavParams} from 'ionic-angular';
+import {AlertController, IonicPage, NavController, NavParams, DateTime} from 'ionic-angular';
 import { Study } from '../../model/Study';
 import { DatabaseProvider } from '../../providers/database/database';
+import { UtilitiesProvider } from '../../providers/utilities/utilities';
+import { ConstantProvider } from '../../providers/constant/constant';
 
 /**
  * Generated class for the BaseTemplatePage page.
@@ -19,14 +21,15 @@ export class BaseTemplatePage {
 
   public item:any;
   public form:any = {};
-  public studyDate:Study;
+  public studyDate: any;
   public materialType = [];
+  public listSegments = [];
 
   public entityStudy : Study;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public database: DatabaseProvider, private alertCtrl: AlertController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public database: DatabaseProvider, private alertCtrl: AlertController, private utilities: UtilitiesProvider, private constant: ConstantProvider) {
     this.item = this.navParams.data;
-    this.studyDate = this.database.getStudyDate().slice(0,10);
+    this.studyDate = this.utilities.getStudyDate().slice(0,10);
     console.log(this.studyDate);
 
     this.init();
@@ -38,21 +41,26 @@ export class BaseTemplatePage {
 
   init(){
     this.materialType = this.database.getMaterial();
+    this.listSegments = this.constant.ListSegments;
   }
 
-  beginStudy(entity){
-    this.entityStudy = entity;
+  beginStudy(form){
+    this.entityStudy = form.value;
 
-    if (entity.valid || this.entityStudy.StudyName){
-      let alert = this.alertCtrl.create({
-        title: 'Invalid some Field',
-        subTitle: 'Please enter full field !',
-        buttons: ['Dismiss']
-      });
-      alert.present();
+    if ( !form.valid || this.entityStudy.StudyName == ''){
+
+      this.utilities.alertNotificationErr(this.constant.strBeginStudyErr.title, this.constant.strBeginStudyErr.subTitle)
+
     } else {
-      this.database.addItemToStudies(this.entityStudy);
+      let checkAddItem = this.database.addItemToStudies(this.entityStudy);
+      if(!checkAddItem){
+        // do something
+        this.utilities.alertNotificationErr(this.constant.strAddItemErr.title, this.constant.strAddItemErr.subTitle)
+        return;
+      }
+
       console.log('OKKKKKKKK')
+      // do something push page
     }
   }
 

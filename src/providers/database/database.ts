@@ -1,7 +1,6 @@
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { ConstantProvider } from '../constant/constant';
-import {} from
 
 /*
   Generated class for the DatabaseProvider provider.
@@ -82,7 +81,7 @@ export class DatabaseProvider {
       listStudy = [];
     }
 
-    for (let i=0; i< listStudy.length(); i++){
+    for (let i=0; i< listStudy.length; i++){
       if (listStudy[i].StudyName == itemName){
         return false;
       }
@@ -96,7 +95,7 @@ export class DatabaseProvider {
   deleteItemFromStudies(studyName){
     let listStudy = this.getListStudy();
 
-    for (let i=0; i< listStudy.length() ; i++){
+    for (let i=0; i< listStudy.length; i++){
       if (listStudy[i].StudyName == studyName){
         listStudy.splice(i,1);
         break;
