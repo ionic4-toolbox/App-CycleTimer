@@ -14,21 +14,20 @@
 
 
 <ion-content padding>
-  <ion-card>
     <ion-list>
-      <ion-row>
-        <ion-col col-7>
-          <label class="setText"> Preset Templates </label>
-        </ion-col>
-        
-        <ion-col col-5>
-          <button ion-button small round outline (click)="onclickNewTemplate()">New Template</button>
-        </ion-col>
-      </ion-row>
-
-      <button ion-item *ngFor="let item of listStudyType" (click)="itemTapped($event, item)">
-        {{item.TemplateName}}
-      </button>
+      <ion-grid>
+        <ion-row >
+          <ion-col col-7>
+            <label class="setText"> Preset Templates </label>
+          </ion-col>
+          
+          <ion-col col-5>
+            <button ion-button small round outline (click)="onclickNewTemplate()">New Template</button>
+          </ion-col>
+        </ion-row>
+        <button ion-item *ngFor="let item of listStudyType" (click)="itemTapped($event, item)">
+            {{item.TemplateName}}
+        </button>
+      </ion-grid>
     </ion-list>
-  </ion-card>
 </ion-content>
