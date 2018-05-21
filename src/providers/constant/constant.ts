@@ -20,8 +20,8 @@ export class ConstantProvider {
     {TemplateName: 'Drills'},
   ]
 
-  public StudyDate = new Date();
-  
+  public StudyDate = new Date().toISOString();
+
 
   constructor(public http: Http) {
     console.log('Hello ConstantProvider Provider');
