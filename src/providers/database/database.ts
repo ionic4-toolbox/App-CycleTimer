@@ -1,6 +1,7 @@
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { ConstantProvider } from '../constant/constant';
+import {} from
 
 /*
   Generated class for the DatabaseProvider provider.
@@ -30,6 +31,23 @@ export class DatabaseProvider {
     return JSON.parse(localStorage.getItem('list_template'));
   }
 
+  //*********************** TABLE MATERIAL *********************************
+
+  setMaterial(data){
+    localStorage.setItem('material',data);
+  }
+
+  getMaterial(){
+    if(localStorage.getItem('material') == null){
+      this.setMaterial(JSON.stringify(this.constant.ListMaterial))
+      return this.constant.ListMaterial;
+    }
+
+    return JSON.parse(localStorage.getItem('material'));
+  }
+
+  //********************************* Table STUDY ***********************************
+
   // set data study date
   setStudyDate(data){
     localStorage.setItem('study_date', data);
@@ -42,6 +60,49 @@ export class DatabaseProvider {
     }
 
     return JSON.parse(localStorage.getItem('study_date'))
+  }
+
+  saveStudy(entity){
+    localStorage.setItem('study',entity);
+  }
+
+  getListStudy(){
+    return JSON.parse(localStorage.getItem('study'));
+  }
+
+  addItemToStudies(item){
+
+    //check if item name exist
+    let itemName = item.StudyName;
+    //
+
+    let listStudy = this.getListStudy();
+
+    if (listStudy == null){
+      listStudy = [];
+    }
+
+    for (let i=0; i< listStudy.length(); i++){
+      if (listStudy[i].StudyName == itemName){
+        return false;
+      }
+    }
+    listStudy.push(item);
+    this.saveStudy(JSON.stringify(listStudy));
+
+    return true;
+  }
+
+  deleteItemFromStudies(studyName){
+    let listStudy = this.getListStudy();
+
+    for (let i=0; i< listStudy.length() ; i++){
+      if (listStudy[i].StudyName == studyName){
+        listStudy.splice(i,1);
+        break;
+      }
+    }
+    this.saveStudy(JSON.stringify(listStudy));
   }
 
 }

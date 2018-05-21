@@ -20,6 +20,12 @@ export class ConstantProvider {
     {TemplateName: 'Drills'},
   ]
 
+  public ListMaterial = [
+    {MaterialName : 'Stone'},
+    {MaterialName : 'Soil'},
+    {MaterialName : 'Brick'}
+  ]
+
   public StudyDate = new Date().toISOString();
 
 
