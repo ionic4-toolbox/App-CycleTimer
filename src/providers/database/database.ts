@@ -31,7 +31,7 @@ export class DatabaseProvider {
   }
 
   addNewTemplate(entity){
-    let itemName = item.TemplateName;
+    let itemName = entity.TemplateName;
     //
 
     let listTemplate = this.getListTemplate();

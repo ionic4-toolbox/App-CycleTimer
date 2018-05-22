@@ -26,6 +26,7 @@ export class HomePage {
   }
 
   ionViewDidLoad() {
+    this.initHome();
     console.log('ionViewDidLoad HomePage');
   }
   initHome(){

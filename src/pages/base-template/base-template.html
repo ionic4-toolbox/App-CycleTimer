@@ -78,7 +78,7 @@
             <ion-select class="borderInput" [(ngModel)]="form.MaterialType" name="MaterialType">
               <ion-option *ngFor="let material of materialType">{{material.MaterialName}}</ion-option>
             </ion-select>
-          </ion-col>          
+          </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
@@ -140,6 +140,7 @@
           </ion-item>
       </ion-list>
     </ion-card>
+    <button ion-button round>Back</button>
     <button ion-button round type="submit"> Begin Study </button>
   </form>
 </ion-content>

@@ -4,6 +4,7 @@ import { Study } from '../../model/Study';
 import { DatabaseProvider } from '../../providers/database/database';
 import { UtilitiesProvider } from '../../providers/utilities/utilities';
 import { ConstantProvider } from '../../providers/constant/constant';
+import {StudyPage} from "../study/study";
 
 /**
  * Generated class for the BaseTemplatePage page.
@@ -45,23 +46,27 @@ export class BaseTemplatePage {
   }
 
   beginStudy(form){
-    this.entityStudy = form.value;
-
-    if ( !form.valid || this.entityStudy.StudyName == ''){
-
-      this.utilities.alertNotificationErr(this.constant.strBeginStudyErr.title, this.constant.strBeginStudyErr.subTitle)
-
-    } else {
-      let checkAddItem = this.database.addItemToStudies(this.entityStudy);
-      if(!checkAddItem){
-        // do something
-        this.utilities.alertNotificationErr(this.constant.strAddItemErr.title, this.constant.strAddItemErr.subTitle)
-        return;
-      }
-
-      console.log('OKKKKKKKK')
-      // do something push page
-    }
+    // this.entityStudy = form.value;
+    //
+    // if ( !form.valid || this.entityStudy.StudyName == ''){
+    //
+    //   this.utilities.alertNotificationErr(this.constant.strBeginStudyErr.title, this.constant.strBeginStudyErr.subTitle)
+    //
+    // } else {
+    //   let checkAddItem = this.database.addItemToStudies(this.entityStudy);
+    //   if(!checkAddItem){
+    //     // do something
+    //     this.utilities.alertNotificationErr(this.constant.strAddItemErr.title, this.constant.strAddItemErr.subTitle)
+    //     return;
+    //   }
+    //
+    //   console.log('OKKKKKKKK')
+    //   this.navCtrl.push(StudyPage, this.entityStudy.StudyName);
+    //   // do something push page
+    // }
+    //
+    // *************** TEST ********************
+    this.navCtrl.push(StudyPage, 'Study 1');
   }
 
 }

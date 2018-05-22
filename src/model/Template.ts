@@ -13,7 +13,7 @@ export class Template {
   public TemplateName : string;
   public TimeUnits : string;
   public UnitsOfMeasure : string;
-  public ListSections : List<Section>
+  //public ListSections : List<Section>
 
   constructor() {
     console.log('Hello BaseProvider Provider');

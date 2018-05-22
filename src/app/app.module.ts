@@ -23,6 +23,16 @@ import { LoginPage } from '../pages/login/login';
 import { StudyTypePage } from '../pages/study-type/study-type';
 import { NewTemplatePage } from '../pages/new-template/new-template';
 import { BaseTemplatePage } from '../pages/base-template/base-template';
+import {StudyPage} from "../pages/study/study";
+
+import { Timer } from '../components/countdown-timer/timer';
+import { TimerProgress } from '../components/timer-progress/timer-progress';
+import { TimelineComponentModule } from '../components/timeline/timeline.module';
+
+export const components = [
+  Timer,
+  TimerProgress
+];
 
 @NgModule({
   declarations: [
@@ -31,7 +41,9 @@ import { BaseTemplatePage } from '../pages/base-template/base-template';
     HomePage,
     StudyTypePage,
     NewTemplatePage,
-    BaseTemplatePage
+    BaseTemplatePage,
+    StudyPage,
+    components
   ],
   imports: [
     BrowserModule,
@@ -45,7 +57,8 @@ import { BaseTemplatePage } from '../pages/base-template/base-template';
     HomePage,
     StudyTypePage,
     NewTemplatePage,
-    BaseTemplatePage
+    BaseTemplatePage,
+    StudyPage
   ],
   providers: [
     StatusBar,
@@ -65,4 +78,7 @@ import { BaseTemplatePage } from '../pages/base-template/base-template';
     HomeProvider
   ]
 })
+
+
+
 export class AppModule {}

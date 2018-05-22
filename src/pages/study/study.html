@@ -7,12 +7,15 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>study</ion-title>
+    <ion-title>Study {{studyName}}</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
+  <h2>Countdown Timer</h2>
+  <timer #countdownTimer [timeInSeconds]="1"></timer>
+  <timer-progress #countdownTimerProgress [timeInSeconds]="1"></timer-progress>
 
 </ion-content>

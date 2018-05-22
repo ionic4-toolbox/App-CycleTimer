@@ -14,8 +14,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'study.html',
 })
 export class StudyPage {
-
+  public studyName : string;
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+    this.studyName = this.navParams.data;
+
   }
 
   ionViewDidLoad() {
