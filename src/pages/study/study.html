@@ -17,10 +17,10 @@
   <!--<h2>Study Timer</h2>-->
   <form #form="ngForm" (ngSubmit)="stopStudy(form)" novalidate>
     <ion-scroll scrollY="true" style="height: 80vh">
-      <timer #timerBeginLoad [timeInSeconds]="0"></timer>
-      <timer-carry #timerBeginCarry [timeInSeconds]="0"></timer-carry>
-      <timer-pit #timmerLeavePit [timeInSeconds]="0"></timer-pit>
-      <timer-repit #timerReEnterPit [timeInSeconds]="0"></timer-repit>
+      <timer #timerBeginLoad [timeInSeconds]="0" (timerLoad) = "getTimerLoad($event)" ></timer>
+      <timer-carry #timerBeginCarry [timeInSeconds]="0"  (timerCarry) = "getTimerCarry($event)"></timer-carry>
+      <timer-pit #timmerLeavePit [timeInSeconds]="0" (timerLeavePit)="getTimerLeavePit($event)"></timer-pit>
+      <timer-repit #timerReEnterPit [timeInSeconds]="0" (timerReEnterPit)="getTimerReEnterPit($event)"></timer-repit>
     </ion-scroll>
     <ion-grid>
       <ion-row text-center>

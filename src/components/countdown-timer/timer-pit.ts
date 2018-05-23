@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import {Component, EventEmitter, Input, Output} from '@angular/core';
 
 export interface CountdownTimer {
   seconds: number;
@@ -16,6 +16,7 @@ export interface CountdownTimer {
 export class TimerPit {
 
   @Input() timeInSeconds: number;
+  @Output() timerLeavePit = new EventEmitter();
   timer: CountdownTimer;
 
   ngOnInit() {
@@ -48,6 +49,8 @@ export class TimerPit {
 
   pauseTimer() {
     this.timer.runTimer = false;
+
+    this.timerLeavePit.emit(this.timer.displayTime);
   }
 
   resumeTimer() {
@@ -80,5 +83,10 @@ export class TimerPit {
     secondsString = (seconds < 10) ? '0' + seconds : seconds.toString();
     return hoursString + ':' + minutesString + ':' + secondsString;
   }
+
+  ngAfterViewInit(){
+    this.timerLeavePit.emit(this.timer.displayTime);
+  }
+
 
 }
