@@ -5,6 +5,7 @@ import { DatabaseProvider } from '../../providers/database/database';
 import { UtilitiesProvider } from '../../providers/utilities/utilities';
 import { ConstantProvider } from '../../providers/constant/constant';
 import { StudyPage } from '../study/study';
+import { StudyTypePage } from '../study-type/study-type';
 
 /**
  * Generated class for the BaseTemplatePage page.
@@ -49,9 +50,9 @@ export class BaseTemplatePage {
     this.entityStudy = form.value;
 
     // if ( !form.valid || this.entityStudy.StudyName == ''){
-    //
+    
     //   this.utilities.alertNotificationErr(this.constant.strBeginStudyErr.title, this.constant.strBeginStudyErr.subTitle)
-    //
+    
     // } else {
     //   let checkAddItem = this.database.addItemToStudies(this.entityStudy);
     //   if(!checkAddItem){
@@ -59,7 +60,7 @@ export class BaseTemplatePage {
     //     this.utilities.alertNotificationErr(this.constant.strAddItemErr.title, this.constant.strAddItemErr.subTitle)
     //     return;
     //   }
-    //
+    
     //   console.log('OKKKKKKKK')
     //   // do something push page
     //   this.navCtrl.push(StudyPage, this.entityStudy.StudyName)
@@ -67,7 +68,6 @@ export class BaseTemplatePage {
 
     this.navCtrl.push(StudyPage, this.entityStudy.StudyName)
   }
-
 
 
 }
