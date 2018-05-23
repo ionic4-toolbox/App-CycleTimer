@@ -59,7 +59,7 @@ export class TimerPit {
       if (!this.timer.runTimer) { return; }
       this.timer.secondsRemaining++;
       this.timer.displayTime = this.getSecondsAsDigitalClock(this.timer.secondsRemaining);
-      if (this.timer.secondsRemaining > 0) {
+      if (this.timer.secondsRemaining >= 0) {
         this.timerTick();
       } else {
         this.timer.hasFinished = true;

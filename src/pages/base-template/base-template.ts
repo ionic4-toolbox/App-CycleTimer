@@ -48,22 +48,26 @@ export class BaseTemplatePage {
   beginStudy(form){
     this.entityStudy = form.value;
 
-    if ( !form.valid || this.entityStudy.StudyName == ''){
+    // if ( !form.valid || this.entityStudy.StudyName == ''){
+    //
+    //   this.utilities.alertNotificationErr(this.constant.strBeginStudyErr.title, this.constant.strBeginStudyErr.subTitle)
+    //
+    // } else {
+    //   let checkAddItem = this.database.addItemToStudies(this.entityStudy);
+    //   if(!checkAddItem){
+    //     // do something
+    //     this.utilities.alertNotificationErr(this.constant.strAddItemErr.title, this.constant.strAddItemErr.subTitle)
+    //     return;
+    //   }
+    //
+    //   console.log('OKKKKKKKK')
+    //   // do something push page
+    //   this.navCtrl.push(StudyPage, this.entityStudy.StudyName)
+    // }
 
-      this.utilities.alertNotificationErr(this.constant.strBeginStudyErr.title, this.constant.strBeginStudyErr.subTitle)
-
-    } else {
-      let checkAddItem = this.database.addItemToStudies(this.entityStudy);
-      if(!checkAddItem){
-        // do something
-        this.utilities.alertNotificationErr(this.constant.strAddItemErr.title, this.constant.strAddItemErr.subTitle)
-        return;
-      }
-
-      console.log('OKKKKKKKK')
-      // do something push page
-      this.navCtrl.push(StudyPage, this.entityStudy.StudyName)
-    }
+    this.navCtrl.push(StudyPage, this.entityStudy.StudyName)
   }
+
+
 
 }

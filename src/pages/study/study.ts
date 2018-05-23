@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { ConstantProvider } from '../../providers/constant/constant';
+import {IonicPage, NavController, NavParams} from 'ionic-angular';
 
 /**
  * Generated class for the StudyPage page.
@@ -16,20 +15,18 @@ import { ConstantProvider } from '../../providers/constant/constant';
 })
 export class StudyPage {
   public studyName : string;
-  public listSegments = [];
-  constructor(public navCtrl: NavController, public navParams: NavParams, private constant: ConstantProvider ) {
+  constructor(public navCtrl: NavController, public navParams: NavParams) {
     this.studyName = this.navParams.data;
     console.log(this.studyName)
-    this.init();
-  }
-
-  init(){
-    this.listSegments = this.constant.ListSegments;
-    console.log(this.listSegments)
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad StudyPage');
+  }
+
+  stopStudy(){
+    let a= document.getElementById('timerBeginLoad');
+    console.log('a: ', a)
   }
 
 }

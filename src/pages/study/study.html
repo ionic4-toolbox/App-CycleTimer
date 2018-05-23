@@ -14,10 +14,26 @@
 
 
 <ion-content padding>
-  <h2>Countdown Timer</h2>
-  <timer #countdownTimer [timeInSeconds]="1"></timer>
-  <timer-carry #countdownTimer [timeInSeconds]="1"></timer-carry>
-  <timer-pit #countdownTimer [timeInSeconds]="1"></timer-pit>
-  <timer-repit #countdownTimer [timeInSeconds]="1"></timer-repit>
+  <!--<h2>Study Timer</h2>-->
+  <form #form="ngForm" (ngSubmit)="stopStudy(form)" novalidate>
+    <ion-scroll scrollY="true" style="height: 80vh">
+      <timer #timerBeginLoad [timeInSeconds]="0"></timer>
+      <timer-carry #timerBeginCarry [timeInSeconds]="0"></timer-carry>
+      <timer-pit #timmerLeavePit [timeInSeconds]="0"></timer-pit>
+      <timer-repit #timerReEnterPit [timeInSeconds]="0"></timer-repit>
+    </ion-scroll>
+    <ion-grid>
+      <ion-row text-center>
+        <ion-col col-6>
+          <button ion-button round outline (click)="backStudy()"> Back </button>
+        </ion-col>
+
+        <ion-col col-6>
+          <button ion-button round outline type="submit"> Stop </button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </form>
 
 </ion-content>
