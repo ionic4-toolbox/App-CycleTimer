@@ -8,17 +8,21 @@ export interface CountdownTimer {
   hasFinished: boolean;
   displayTime: string;
 }
-
-
+let totalPause =0;
+let timePause =0;
+let processCountTimerPause;
 @Component({
   selector: 'timer',
   templateUrl: 'timer.html'
 })
+
 export class Timer {
 
-  @Input() timeInSeconds: number;
+  @Input() timeInSeconds: number =0;
   @Output() timerLoad = new EventEmitter();
   timer: CountdownTimer;
+
+  public timePause: number;
 
   ngOnInit() {
     this.initTimer();
@@ -29,6 +33,7 @@ export class Timer {
   }
 
   initTimer() {
+    totalPause =0;
     if (!this.timeInSeconds) { this.timeInSeconds = 0; }
 
     this.timer = <CountdownTimer>{
@@ -52,9 +57,16 @@ export class Timer {
     this.timer.runTimer = false;
 
     this.timerLoad.emit(this.timer.displayTime);
+
+    clearInterval(processCountTimerPause);
+    this.intervalPause();
   }
 
   resumeTimer() {
+
+    totalPause += timePause;
+    console.log('time pause: ', timePause)
+    console.log('total pause: ', totalPause);
     this.startTimer();
   }
 
@@ -89,5 +101,12 @@ export class Timer {
     this.timerLoad.emit(this.timer.displayTime);
   }
 
+  intervalPause(){
+    timePause =0;
+    processCountTimerPause = setInterval(()=>{
+      timePause += 1;
+
+    },1000)
+  }
 
 }
