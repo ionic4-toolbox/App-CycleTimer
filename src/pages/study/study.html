@@ -7,7 +7,7 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Study {{studyName}}</ion-title>
+    <ion-title>{{studyName}}</ion-title>
   </ion-navbar>
 
 </ion-header>
@@ -16,6 +16,8 @@
 <ion-content padding>
   <h2>Countdown Timer</h2>
   <timer #countdownTimer [timeInSeconds]="1"></timer>
-  <timer-progress #countdownTimerProgress [timeInSeconds]="1"></timer-progress>
+  <timer-carry #countdownTimer [timeInSeconds]="1"></timer-carry>
+  <timer-pit #countdownTimer [timeInSeconds]="1"></timer-pit>
+  <timer-repit #countdownTimer [timeInSeconds]="1"></timer-repit>
 
 </ion-content>

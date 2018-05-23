@@ -28,9 +28,15 @@ import {StudyPage} from "../pages/study/study";
 import { Timer } from '../components/countdown-timer/timer';
 import { TimerProgress } from '../components/timer-progress/timer-progress';
 import { TimelineComponentModule } from '../components/timeline/timeline.module';
+import { TimerCarry } from '../components/countdown-timer/timer-carry';
+import { TimerPit } from '../components/countdown-timer/timer-pit';
+import { TimerRepit } from '../components/countdown-timer/timer-repit';
 
 export const components = [
   Timer,
+  TimerCarry,
+  TimerPit,
+  TimerRepit,
   TimerProgress
 ];
 

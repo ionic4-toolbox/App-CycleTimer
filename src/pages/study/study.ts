@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { ConstantProvider } from '../../providers/constant/constant';
 
 /**
  * Generated class for the StudyPage page.
@@ -15,9 +16,16 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class StudyPage {
   public studyName : string;
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public listSegments = [];
+  constructor(public navCtrl: NavController, public navParams: NavParams, private constant: ConstantProvider ) {
     this.studyName = this.navParams.data;
+    console.log(this.studyName)
+    this.init();
+  }
 
+  init(){
+    this.listSegments = this.constant.ListSegments;
+    console.log(this.listSegments)
   }
 
   ionViewDidLoad() {
