@@ -27,6 +27,7 @@ export class TimerDump {
 
   hasFinished() {
     return this.timer.hasFinished;
+
   }
 
   initTimer() {

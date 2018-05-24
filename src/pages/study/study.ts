@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {ConstantProvider} from "../../providers/constant/constant";
 
 /**
  * Generated class for the StudyPage page.
@@ -21,9 +22,19 @@ export class StudyPage {
   public checkActiveLeavePit : boolean = false;
   public checkActiveReEnterPit : boolean = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+
+
+  public checkStatus : string;
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private constant : ConstantProvider) {
     this.studyName = this.navParams.data;
-    console.log(this.studyName)
+    console.log(this.studyName);
+
+    this.init();
+  }
+
+  init(){
+    this.checkStatus = this.constant.StatusLoad;
   }
 
   ionViewDidLoad() {
@@ -46,6 +57,12 @@ export class StudyPage {
   }
   getTimerReEnterPit(ev){
     console.log('Timer in second ReEnter pit: ',ev)
+  }
+
+  setChangeStatus(ev){
+    this.checkStatus = ev;
+
+    console.log('Change Status: ', this.checkStatus);
   }
 
 }

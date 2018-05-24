@@ -16,11 +16,13 @@ export interface CountdownTimer {
 export class TimerPit {
 
   @Input() timeInSeconds: number;
+  @Input() checkStatus : string;
   @Output() timerLeavePit = new EventEmitter();
   timer: CountdownTimer;
 
   ngOnInit() {
     this.initTimer();
+    console.log('Check Status Pit: ', this.checkStatus)
   }
 
   hasFinished() {
