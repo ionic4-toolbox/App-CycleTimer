@@ -46,6 +46,12 @@ export class ConstantProvider {
   ]
 
 
+  public StatusLoad  = 'Load'
+  public StatusCarry = 'Carry'
+  public StatusLeavePit  = 'LeavePit'
+  public StatusReEnterPit  = 'ReEnterPit'
+
+
   constructor(public http: Http) {
     console.log('Hello ConstantProvider Provider');
   }

@@ -1,4 +1,5 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output, Renderer} from '@angular/core';
+import {ConstantProvider} from "../../providers/constant/constant";
 
 export interface CountdownTimer {
   seconds: number;
@@ -18,11 +19,18 @@ export interface CountdownTimer {
 export class TimerCarry {
 
   @Input() timeInSeconds: number;
+  @Input() checkStatus : string;
   @Output() timerCarry = new EventEmitter();
+  @Output() changeStatus = new EventEmitter();
   timer: CountdownTimer;
+
+  constructor(public renderer: Renderer, public constant: ConstantProvider){
+
+  }
 
   ngOnInit() {
     this.initTimer();
+    console.log('Status Timer Carry: ', this.checkStatus)
   }
 
   hasFinished() {
@@ -47,6 +55,8 @@ export class TimerCarry {
     this.timer.hasStarted = true;
     this.timer.runTimer = true;
     this.timerTick();
+
+    this.changeStatus.emit('1234');
   }
 
   pauseTimer() {
