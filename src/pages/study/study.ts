@@ -25,6 +25,8 @@ export class StudyPage {
 
 
   public checkStatus : string;
+  public started : boolean;
+
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private constant : ConstantProvider) {
     this.studyName = this.navParams.data;
@@ -34,7 +36,7 @@ export class StudyPage {
   }
 
   init(){
-    this.checkStatus = this.constant.StatusLoad;
+    this.checkStatus =this.constant.StatusLoad;
   }
 
   ionViewDidLoad() {
@@ -60,8 +62,10 @@ export class StudyPage {
   }
 
   setChangeStatus(ev){
+    // if (this.checkStatus != ev){
+    //
+    // }
     this.checkStatus = ev;
-
     console.log('Change Status: ', this.checkStatus);
   }
 

@@ -31,13 +31,15 @@ import { TimelineComponentModule } from '../components/timeline/timeline.module'
 import { TimerCarry } from '../components/countdown-timer/timer-carry';
 import { TimerPit } from '../components/countdown-timer/timer-pit';
 import { TimerRepit } from '../components/countdown-timer/timer-repit';
+import {TestTimerComponent} from "../components/test-timer/test-timer";
 
 export const components = [
   Timer,
   TimerCarry,
   TimerPit,
   TimerRepit,
-  TimerProgress
+  TimerProgress,
+  TestTimerComponent
 ];
 
 @NgModule({

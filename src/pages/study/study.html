@@ -1,6 +1,5 @@
 <!--
   Generated template for the StudyPage page.
-
   See http://ionicframework.com/docs/components/#navigation for more info on
   Ionic pages and navigation.
 -->
@@ -17,10 +16,12 @@
   <!--<h2>Study Timer</h2>-->
   <form #form="ngForm" (ngSubmit)="stopStudy(form)" novalidate>
     <ion-scroll scrollY="true" style="height: 80vh">
-      <timer #timerBeginLoad  [timeInSeconds]="0" checkStatus="{{checkStatus}}" (timerLoad) = "getTimerLoad($event)"  ></timer>
+      <timer #timerBeginLoad  [timeInSeconds]="0" checkStatus="{{checkStatus}}" (changeStatus)="setChangeStatus($event)" (timerLoad) = "getTimerLoad($event)"  ></timer>
       <timer-carry #timerBeginCarry [timeInSeconds]="0" checkStatus="{{checkStatus}}" (changeStatus)="setChangeStatus($event)" (timerCarry) = "getTimerCarry($event)"></timer-carry>
       <timer-pit #timmerLeavePit [timeInSeconds]="0" checkStatus="{{checkStatus}}" (timerLeavePit)="getTimerLeavePit($event)"></timer-pit>
       <timer-repit #timerReEnterPit [timeInSeconds]="0" checkStatus="{{checkStatus}}" (timerReEnterPit)="getTimerReEnterPit($event)"></timer-repit>
+      <!--<test-timer #timerBeginLoad  [timeInSeconds]="0"></test-timer>-->
+
     </ion-scroll>
     <ion-grid>
       <ion-row text-center>

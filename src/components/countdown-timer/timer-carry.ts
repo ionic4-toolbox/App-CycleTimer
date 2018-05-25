@@ -1,4 +1,4 @@
-import {Component, EventEmitter, Input, Output, Renderer} from '@angular/core';
+import {Component, EventEmitter, Input, Output, Renderer, ViewChild} from '@angular/core';
 import {ConstantProvider} from "../../providers/constant/constant";
 
 export interface CountdownTimer {
@@ -23,6 +23,8 @@ export class TimerCarry {
   @Output() timerCarry = new EventEmitter();
   @Output() changeStatus = new EventEmitter();
   timer: CountdownTimer;
+
+  @ViewChild('BeginCarryId') CarryId : any;
 
   constructor(public renderer: Renderer, public constant: ConstantProvider){
 
@@ -56,7 +58,9 @@ export class TimerCarry {
     this.timer.runTimer = true;
     this.timerTick();
 
-    this.changeStatus.emit('1234');
+    this.changeStatus.emit(this.constant.StatusCarry);
+
+
   }
 
   pauseTimer() {
@@ -98,6 +102,12 @@ export class TimerCarry {
 
   ngAfterViewInit(){
     this.timerCarry.emit(this.timer.displayTime);
+
+
+    console.log(this.checkStatus)
+    if (this.checkStatus != this.constant.StatusCarry){
+      this.renderer.setElementAttribute(this.CarryId.nativeElement,'style','display : none')
+    }
   }
 
 }

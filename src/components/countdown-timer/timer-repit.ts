@@ -1,4 +1,5 @@
-import {Component, EventEmitter, Input, Output} from '@angular/core';
+import {Component, EventEmitter, Input, Output, Renderer, ViewChild} from '@angular/core';
+import {ConstantProvider} from "../../providers/constant/constant";
 
 export interface CountdownTimer {
   seconds: number;
@@ -19,6 +20,13 @@ export class TimerRepit {
   @Input() checkStatus : string;
   @Output() timerReEnterPit = new EventEmitter();
   timer: CountdownTimer;
+
+
+  @ViewChild('ReEnterPitId') RePitId : any;
+
+  constructor(public renderer: Renderer, public constant: ConstantProvider){
+
+  }
 
   ngOnInit() {
     this.initTimer();
@@ -88,5 +96,9 @@ export class TimerRepit {
 
   ngAfterViewInit(){
     this.timerReEnterPit.emit(this.timer.displayTime);
+
+    if (this.checkStatus != this.constant.StatusReEnterPit){
+      this.renderer.setElementAttribute(this.RePitId.nativeElement,'style','display : none')
+    }
   }
 }

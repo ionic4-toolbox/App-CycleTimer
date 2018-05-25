@@ -22,6 +22,8 @@ export class Timer {
   @Input() timeInSeconds: number =0;
   @Input() checkStatus : string;
   @Output() timerLoad = new EventEmitter();
+  @Output() changeStatus = new EventEmitter();
+
   timer: CountdownTimer;
 
   @ViewChild('BeginLoadId') LoadId : any;
@@ -59,6 +61,8 @@ export class Timer {
     this.timer.hasStarted = true;
     this.timer.runTimer = true;
     this.timerTick();
+
+    this.changeStatus.emit(this.constant.StatusLoad);
   }
 
   pauseTimer() {
