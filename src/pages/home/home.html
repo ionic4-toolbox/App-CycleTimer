@@ -8,6 +8,12 @@
 
   <ion-navbar>
     <ion-title>Home</ion-title>
+    
+    <ion-buttons end>
+      <button ion-button (click)="nextPageSettings()">
+        <ion-icon name="settings"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>
@@ -20,13 +26,24 @@
   <ion-list-header>
     Recent Studies
   </ion-list-header>
+  
+  <ion-item>
+    <ion-label>Search Study</ion-label>
+    <ion-select [(ngModel)]="sort" [compareWith]="compareFn">
+      <ion-option *ngFor="let o of sortData" [value]="o">{{o.text}}</ion-option>
+    </ion-select>
+  </ion-item>
+
   <ion-item-sliding #slidingItem *ngFor="let study of listStudy; let i = index; ">
     <ion-item #item>
       <ion-icon item-start color="danger" name="remove-circle" (click)="openOption(slidingItem, item, $event)"></ion-icon> {{study.StudyName}}
     </ion-item>
-    <ion-item-options icon-start>
+    <ion-item-options item-start>
+      <button ion-button >
+        <ion-icon name="mail"></ion-icon>
+      </button>
       <button color="danger" ion-button expandable (click)="deleteItem(study, i)">
-        <ion-icon name="trash"></ion-icon>
+        <ion-icon name="trash" ></ion-icon>
       </button>
     </ion-item-options>
   </ion-item-sliding>

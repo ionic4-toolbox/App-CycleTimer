@@ -1,3 +1,4 @@
+import { SettingsPage } from './../pages/settings/settings';
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
@@ -51,6 +52,7 @@ export const components = [
     NewTemplatePage,
     BaseTemplatePage,
     StudyPage,
+    SettingsPage,
     components
   ],
   imports: [
@@ -66,7 +68,8 @@ export const components = [
     StudyTypePage,
     NewTemplatePage,
     BaseTemplatePage,
-    StudyPage
+    StudyPage,
+    SettingsPage
   ],
   providers: [
     StatusBar,
