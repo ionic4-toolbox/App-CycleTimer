@@ -18,4 +18,8 @@ export class HomeProvider {
   getListStudy(){
     return (this.db.getListStudy() == null) ? [] : this.db.getListStudy();
   }
+
+  getStudyByTemplateName(templateName){
+    return this.db.getStudyByTemplateName(templateName);
+  }
 }

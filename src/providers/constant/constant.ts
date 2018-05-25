@@ -12,12 +12,13 @@ import { Template } from '../../model/Template';
 export class ConstantProvider {
 
   public ListTemplateType = [
+    {TemplateName: 'HauLing'},
+    {TemplateName: 'Drills'},
     {TemplateName: 'Dozing'},
     {TemplateName: 'Hauling Unit'},
     {TemplateName: 'Loading Unit'},
     {TemplateName: 'Hauling Unit (Full Cycle)'},
-    {TemplateName: 'Trenching/Excavating'},
-    {TemplateName: 'Drills'},
+    {TemplateName: 'Trenching/Excavating'}
   ]
 
   public ListMaterial = [

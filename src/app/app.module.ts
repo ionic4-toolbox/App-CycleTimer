@@ -33,6 +33,7 @@ import { TimerCarry } from '../components/countdown-timer/timer-carry';
 import { TimerPit } from '../components/countdown-timer/timer-pit';
 import { TimerRepit } from '../components/countdown-timer/timer-repit';
 import {TestTimerComponent} from "../components/test-timer/test-timer";
+import {EmailComposer} from "@ionic-native/email-composer";
 
 export const components = [
   Timer,
@@ -74,6 +75,7 @@ export const components = [
   providers: [
     StatusBar,
     SplashScreen,
+    EmailComposer,
     {provide: ErrorHandler, useClass: IonicErrorHandler},
     ConfigProvider,
     UtilitiesProvider,
