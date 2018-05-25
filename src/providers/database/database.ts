@@ -113,11 +113,11 @@ export class DatabaseProvider {
   }
 
   getStudyByTemplateName(templateName){
-    let listTemplate = this.getListTemplate();
+    let listStudy = this.getListStudy();
     let arrStudyInTemplate = [];
-    for (let i=0; i< listTemplate.length; i++){
-      if (listTemplate[i].TemplateName == templateName){
-        arrStudyInTemplate.push(listTemplate[i]);
+    for (let i=0; i< listStudy.length; i++){
+      if (listStudy[i].TemplateName == templateName){
+        arrStudyInTemplate.push(listStudy[i]);
       }
     }
 
