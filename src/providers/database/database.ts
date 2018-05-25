@@ -117,11 +117,9 @@ export class DatabaseProvider {
     let arrStudyInTemplate = [];
 
     if(templateName == 'All'){
-      for (let i=0; i< listStudy.length; i++){
-        arrStudyInTemplate.push(listStudy[i]);
-      }
-
-      return arrStudyInTemplate;
+      
+      let listStudy = this.getListStudy();
+      return listStudy;
     }
 
     for (let i=0; i< listStudy.length; i++){

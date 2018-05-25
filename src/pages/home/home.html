@@ -28,7 +28,7 @@
   </ion-list-header>
   
   <ion-item>
-    <ion-label>Search Study</ion-label>
+    <ion-label>Search Template</ion-label>
     <ion-select (ionChange)="getStudyByTemplateName($event)">
       <ion-option *ngFor="let o of listTemplate" [value]="o.TemplateName" >{{o.TemplateName}}</ion-option>
     </ion-select>
@@ -39,7 +39,7 @@
       <ion-icon item-start color="danger" name="remove-circle" (click)="openOption(slidingItem, item, $event)"></ion-icon> {{study.StudyName}}
     </ion-item>
     <ion-item-options item-start>
-      <button ion-button >
+      <button ion-button expandable (click)="sendEmail(study, i)">
         <ion-icon name="mail"></ion-icon>
       </button>
       <button color="danger" ion-button expandable (click)="deleteItem(study, i)">

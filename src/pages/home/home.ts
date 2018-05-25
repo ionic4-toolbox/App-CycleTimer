@@ -57,7 +57,7 @@ export class HomePage {
     }
 
     this.activeItemSliding = itemSlide;
-    const swipeAmount = 33; // set your required swipe amount
+    const swipeAmount = 70; // set your required swipe amount
 
     console.log('swipe amount ', swipeAmount);
     itemSlide.startSliding(swipeAmount);
@@ -82,7 +82,7 @@ export class HomePage {
     this.navCtrl.push(StudyTypePage)
   }
 
-  deleteItem(study,event){
+  deleteItem(study,ev){
     this.database.deleteItemFromStudies(study.StudyName);
     this.listStudy = this.database.getListStudy();
   }
@@ -101,7 +101,7 @@ export class HomePage {
     this.navCtrl.push(SettingsPage)
   }
 
-  sendEmail(){
+  sendEmail(study,ev){
     let email ={
       to : this.to,
       cc : [],
