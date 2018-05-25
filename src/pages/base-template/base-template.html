@@ -14,7 +14,7 @@
 
 
 <ion-content padding class="content">
-  <form #form="ngForm" (ngSubmit)="beginStudy(form)" novalidate>
+  <form #form="ngForm" (ngSubmit)="beginStudy(form, item.TemplateName)" novalidate>
     <ion-card class="card">
       <ion-card-content>
         <ion-grid>

@@ -1,3 +1,4 @@
+import { Template } from './../../model/Template';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ItemSliding, Item } from 'ionic-angular';
 import { StudyTypePage } from '../study-type/study-type';
@@ -6,6 +7,7 @@ import {Study} from "../../model/Study";
 import {HomeProvider} from "../../providers/home/home";
 import {Template} from "../../model/Template";
 import {UtilitiesProvider} from "../../providers/utilities/utilities";
+import { SettingsPage } from '../settings/settings';
 
 /**
  * Generated class for the HomePage page.
@@ -28,6 +30,7 @@ export class HomePage {
   public subject= '';
   public body = '';
   public to ='';
+  // public sort: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private homeProvider: HomeProvider, private database: DatabaseProvider, private utils: UtilitiesProvider) {
       this.initHome();
@@ -40,6 +43,9 @@ export class HomePage {
     this.listStudy = this.homeProvider.getListStudy();
     //let arrTemplate =  this.database.getListTemplate();
     this.listTemplate = this.database.getListTemplate();
+    // this.sort = {TemplateName: 'Dozing'}
+
+    this.listTemplate.push({TemplateName: 'All'});
     console.log('List Template 1: ', this.listTemplate)
 
   }
@@ -83,7 +89,17 @@ export class HomePage {
   }
 
   getStudyByTemplateName(templateName){
+    console.log('dad', templateName)
     this.listStudy = this.homeProvider.getStudyByTemplateName(templateName);
+  }
+
+  // compareFn(option1: any, option2: any) {
+  //   return option1.value === option2.value;
+  // }
+
+
+  nextPageSettings(){
+    this.navCtrl.push(SettingsPage)
   }
 
   sendEmail(){

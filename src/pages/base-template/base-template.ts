@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import {AlertController, IonicPage, NavController, NavParams, DateTime} from 'ionic-angular';
+import { AlertController, IonicPage, NavController, NavParams, DateTime, Item } from 'ionic-angular';
 import { Study } from '../../model/Study';
 import { DatabaseProvider } from '../../providers/database/database';
 import { UtilitiesProvider } from '../../providers/utilities/utilities';
@@ -29,7 +29,8 @@ export class BaseTemplatePage {
 
   public entityStudy : Study;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public database: DatabaseProvider, private alertCtrl: AlertController, private utilities: UtilitiesProvider, private constant: ConstantProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public database: DatabaseProvider, private alertCtrl: AlertController,
+     private utilities: UtilitiesProvider, private constant: ConstantProvider) {
     this.item = this.navParams.data;
     this.studyDate = this.utilities.getStudyDate().slice(0,10);
     console.log(this.studyDate);
@@ -46,8 +47,10 @@ export class BaseTemplatePage {
     this.listSegments = this.constant.ListSegments;
   }
 
-  beginStudy(form){
+  beginStudy(form, item){
     this.entityStudy = form.value;
+    this.entityStudy.TemplateName = item;
+    console.log('test :', this.entityStudy)
 
     if ( !form.valid || this.entityStudy.StudyName == ''){
 
