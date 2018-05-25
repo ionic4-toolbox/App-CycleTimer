@@ -115,6 +115,15 @@ export class DatabaseProvider {
   getStudyByTemplateName(templateName){
     let listStudy = this.getListStudy();
     let arrStudyInTemplate = [];
+
+    if(templateName == 'All'){
+      for (let i=0; i< listStudy.length; i++){
+        arrStudyInTemplate.push(listStudy[i]);
+      }
+
+      return arrStudyInTemplate;
+    }
+
     for (let i=0; i< listStudy.length; i++){
       if (listStudy[i].TemplateName == templateName){
         arrStudyInTemplate.push(listStudy[i]);

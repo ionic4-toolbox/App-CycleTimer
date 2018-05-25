@@ -1,4 +1,3 @@
-import { Template } from './../../model/Template';
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, ItemSliding, Item } from 'ionic-angular';
 import { StudyTypePage } from '../study-type/study-type';
