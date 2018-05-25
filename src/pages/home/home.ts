@@ -4,6 +4,8 @@ import { StudyTypePage } from '../study-type/study-type';
 import { DatabaseProvider } from '../../providers/database/database';
 import {Study} from "../../model/Study";
 import {HomeProvider} from "../../providers/home/home";
+import {Template} from "../../model/Template";
+import {UtilitiesProvider} from "../../providers/utilities/utilities";
 
 /**
  * Generated class for the HomePage page.
@@ -18,19 +20,28 @@ import {HomeProvider} from "../../providers/home/home";
   templateUrl: 'home.html',
 })
 export class HomePage {
-  public listStudy : Study;
+  public listStudy : any;
+  public listTemplate : any;
   activeItemSliding: ItemSliding = null;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private homeProvider: HomeProvider, private database: DatabaseProvider) {
+  // Send Email
+  public subject= '';
+  public body = '';
+  public to ='';
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private homeProvider: HomeProvider, private database: DatabaseProvider, private utils: UtilitiesProvider) {
       this.initHome();
   }
 
   ionViewDidLoad() {
-    this.initHome();
     console.log('ionViewDidLoad HomePage');
   }
   initHome(){
     this.listStudy = this.homeProvider.getListStudy();
+    //let arrTemplate =  this.database.getListTemplate();
+    this.listTemplate = this.database.getListTemplate();
+    console.log('List Template 1: ', this.listTemplate)
+
   }
 
   openOption(itemSlide: ItemSliding, item: Item, event) {
@@ -70,4 +81,24 @@ export class HomePage {
     this.database.deleteItemFromStudies(study.StudyName);
     this.listStudy = this.database.getListStudy();
   }
+
+  getStudyByTemplateName(templateName){
+    this.listStudy = this.homeProvider.getStudyByTemplateName(templateName);
+  }
+
+  sendEmail(){
+    let email ={
+      to : this.to,
+      cc : [],
+      bcc : [],
+      attachment : [],
+      subject : this.subject,
+      body: this.body,
+      isHtml : false,
+      app: 'Gmail'
+    }
+
+    this.utils.sendEmail(email);
+  }
+
 }

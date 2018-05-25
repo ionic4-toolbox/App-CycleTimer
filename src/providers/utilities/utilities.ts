@@ -2,6 +2,7 @@ import {Http} from '@angular/http';
 import { Injectable } from '@angular/core';
 import { AlertController } from 'ionic-angular';
 import { ConstantProvider } from '../constant/constant';
+import {EmailComposer} from "@ionic-native/email-composer";
 
 /*
   Generated class for the UtilitiesProvider provider.
@@ -12,7 +13,7 @@ import { ConstantProvider } from '../constant/constant';
 @Injectable()
 export class UtilitiesProvider {
 
-  constructor(public http: Http, private alertCtrl : AlertController, private constant: ConstantProvider) {
+  constructor(public http: Http, private alertCtrl : AlertController, private constant: ConstantProvider, private emailComposer: EmailComposer) {
     console.log('Hello UtilitiesProvider Provider');
   }
 
@@ -28,6 +29,16 @@ export class UtilitiesProvider {
   getStudyDate(){
    return this.constant.StudyDate;
   }
+
+  insertItemToPosition(arr, index, item){
+    arr.splice(index,0,item);
+  }
+
+  sendEmail(email){
+    this.emailComposer.open(email);
+  }
+
+
 
 
 }

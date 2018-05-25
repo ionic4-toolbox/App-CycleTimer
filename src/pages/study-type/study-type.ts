@@ -23,7 +23,7 @@ export class StudyTypePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams , public database: DatabaseProvider) {
     this.listStudyType = this.database.getListTemplate();
-    console.log(this.listStudyType )
+    console.log(this.listStudyType)
   }
 
   ionViewDidLoad() {

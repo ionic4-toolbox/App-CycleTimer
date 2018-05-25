@@ -112,4 +112,16 @@ export class DatabaseProvider {
     this.saveStudy(JSON.stringify(listStudy));
   }
 
+  getStudyByTemplateName(templateName){
+    let listTemplate = this.getListTemplate();
+    let arrStudyInTemplate = [];
+    for (let i=0; i< listTemplate.length; i++){
+      if (listTemplate[i].TemplateName == templateName){
+        arrStudyInTemplate.push(listTemplate[i]);
+      }
+    }
+
+    return arrStudyInTemplate;
+  }
+
 }
