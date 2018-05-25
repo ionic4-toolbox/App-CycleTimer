@@ -21,6 +21,7 @@ export class Study {
   public BladeType : string;
 
   public Template : Template;
+  public TemplateName: string;
 
   constructor() {
     console.log('Hello BaseProvider Provider');
