@@ -48,12 +48,53 @@ export class ConstantProvider {
       subTitle: 'Duplicate Item Name in Your Db !'
   }
 
-  public ListSegments = [
+  public ListSegmentsDozing = [
     {name: 'Begin Load'},
     {name: 'Begin Carry'},
     {name: 'Leave Pit'},
     {name: 'ReEnter Pit'},
 
+  ]
+  public ListSegmentsHauling =[
+    {name: 'Enter Load Area'},
+    {name: 'Begin Exchange'},
+    {name: 'End Load'},
+    {name: 'Enter Scales'},
+    {name: 'Leave Scales'},
+    {name: 'Leave Load Area'},
+    {name: 'Enter Dump Area'},
+    {name: 'Begin Dump'},
+    {name: 'End Dump'},
+    {name: 'Leave Dump Area'}
+  ]
+
+  public ListSegmentsLoading =[
+    {name: 'Begin Dump'},
+    {name: 'End Dump'},
+    {name: 'Begin Load'},
+    {name: 'End Load'},
+  ]
+
+  public ListSegmentsHaulingFC =[
+    {name : 'Begin Load'}
+  ]
+
+  public ListSegmentsTrechingExcavating =[
+    {name: 'Begin Dump'},
+    {name: 'End Dump'},
+    {name: 'Begin Load'},
+    {name: 'End Load'},
+  ]
+
+  public ListSegmentsDrilling =[
+    {name: 'Begin Tram'},
+    {name: 'Begin Level'},
+    {name: 'Begin Position Mast'},
+    {name: 'Begin Collar'},
+    {name: 'Begin Drill'},
+    {name: 'Begin Retract'},
+    {name: 'Begin Position Mast'},
+    {name: 'Begin Un-Jack Machine'}
   ]
 
 

@@ -50,13 +50,39 @@ export class BaseTemplatePage {
     this.templates = this.constant.TemplatesObject;
     console.log('list Template: ', this.listTemplate)
 
-    //console.log(this.item.TemplateName + '++++++++++++++++' + this.templates.TemplateHaulingUnitFullCycle)
 
     this.studyDate = this.utilities.getStudyDate().slice(0,10);
     console.log(this.studyDate);
 
     this.materialType = this.database.getMaterial();
-    this.listSegments = this.constant.ListSegments;
+    this.getListSegment();
+    console.log(this.listSegments);
+
+  }
+
+  getListSegment(){
+    switch (this.item.TemplateName){
+      case this.constant.TemplatesObject.TemplateHaulingUnitFullCycle:
+        this.listSegments= this.constant.ListSegmentsHaulingFC;
+        break;
+      case this.constant.TemplatesObject.TemplateDozing:
+        this.listSegments= this.constant.ListSegmentsDozing;
+        break;
+      case this.constant.TemplatesObject.TemplateDrilling:
+        this.listSegments= this.constant.ListSegmentsDrilling;
+        break;
+      case this.constant.TemplatesObject.TemplateHaulingUnit:
+        this.listSegments= this.constant.ListSegmentsHauling;
+        break;
+      case this.constant.TemplatesObject.TemplateLoadingUnit:
+        this.listSegments= this.constant.ListSegmentsLoading;
+        break;
+      case this.constant.TemplatesObject.TemplateTrenching:
+        this.listSegments= this.constant.ListSegmentsTrechingExcavating;
+        break;
+      // default:
+      //   //do something
+    }
   }
 
   beginStudy(form, item){
