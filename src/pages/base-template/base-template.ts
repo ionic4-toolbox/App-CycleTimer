@@ -61,6 +61,8 @@ export class BaseTemplatePage {
   }
 
   getListSegment(){
+    console.log('xxx', this.item.TemplateName);
+    console.log(this.constant.TemplatesObject.TemplateDrilling);
     switch (this.item.TemplateName){
       case this.constant.TemplatesObject.TemplateHaulingUnitFullCycle:
         this.listSegments= this.constant.ListSegmentsHaulingFC;

@@ -12,8 +12,7 @@ import { Template } from '../../model/Template';
 export class ConstantProvider {
 
   public ListTemplateType = [
-    {TemplateName: 'HauLing'},
-    {TemplateName: 'Drills'},
+    {TemplateName: 'Drilling'},
     {TemplateName: 'Dozing'},
     {TemplateName: 'Hauling Unit'},
     {TemplateName: 'Loading Unit'},
@@ -22,8 +21,7 @@ export class ConstantProvider {
   ]
 
   public TemplatesObject={
-     TemplateHauling : 'HauLing',
-     TemplateDrilling : 'Drills',
+     TemplateDrilling : 'Drilling',
      TemplateDozing : 'Dozing',
      TemplateHaulingUnit : 'Hauling Unit',
      TemplateLoadingUnit : 'Loading Unit',

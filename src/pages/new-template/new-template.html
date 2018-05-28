@@ -32,6 +32,58 @@
 
     <ion-card class="card">
       <ion-card-header>
+        <ion-label>Create Field</ion-label>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row *ngFor = "let field of fieldTextboxArray ; let i = index">
+            <ion-col col-4>
+              <ion-label>Field {{i+1}}</ion-label>
+            </ion-col>
+            <ion-col col-8>
+              <ion-input class="borderInput" [(ngModel)]="fieldTextboxArray[i].text" name="text" required></ion-input>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <ion-grid>
+          <ion-row text-center>
+            <ion-col col-12>
+              <button ion-button round outline small (click)="addFieldTextbox()"> Add Field </button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card>
+<!-- 
+    <ion-card class="card">
+      <ion-card-header>
+        <ion-label>Create Field Number</ion-label>
+      </ion-card-header>
+      <ion-card-content>
+        <ion-grid>
+          <ion-row *ngFor = "let field of fieldNumberArray ; let i = index">
+            <ion-col col-4>
+              <ion-label>Field {{i+1}}</ion-label>
+            </ion-col>
+            <ion-col col-8>
+              <ion-input class="borderInput" [(ngModel)]="fieldNumberArray[i].number" name="number" required></ion-input>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+
+        <ion-grid>
+          <ion-row text-center>
+            <ion-col col-12>
+              <button ion-button round outline small (click)="addFieldNumber()"> Add Field </button>
+            </ion-col>
+          </ion-row>
+        </ion-grid>
+      </ion-card-content>
+    </ion-card> -->
+
+    <ion-card class="card">
+      <ion-card-header>
         <ion-label>Create Sections</ion-label>
       </ion-card-header>
       <ion-card-content>
@@ -41,7 +93,7 @@
               <ion-label>Section {{i+1}}</ion-label>
             </ion-col>
             <ion-col col-8>
-              <ion-input class="borderInput" [(ngModel)]="sectionArray[i].value" name="value" required></ion-input>
+              <ion-input class="borderInput" [(ngModel)]="sectionArray[i].section" name="section" required></ion-input>
             </ion-col>
           </ion-row>
         </ion-grid>

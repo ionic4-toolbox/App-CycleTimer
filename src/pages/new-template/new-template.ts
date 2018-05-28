@@ -17,6 +17,9 @@ export class NewTemplatePage {
 
   public form:any;
   public sectionArray:any = [];
+  public fieldTextboxArray:any = [];
+  public fieldNumberArray:any = [];
+  
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
@@ -25,8 +28,17 @@ export class NewTemplatePage {
     console.log('ionViewDidLoad NewTemplatePage');
   }
 
+
+  addFieldTextbox(){
+    this.fieldTextboxArray.push({'text':''});
+  }
+
+  addFieldNumber(){
+    this.fieldNumberArray.push({'number':''});
+  }
+
   addSection(){
-    this.sectionArray.push({'value':''});
+    this.sectionArray.push({'section':''});
   }
 
   cancelNewTemplate(){
@@ -35,5 +47,9 @@ export class NewTemplatePage {
 
   saveNewTemplate(form){
 
+    console.log(this.sectionArray)
+    console.log(this.fieldTextboxArray)
+    console.log(form.value)
+    
   }
 }
