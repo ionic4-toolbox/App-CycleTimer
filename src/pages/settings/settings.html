@@ -6,7 +6,7 @@
 -->
 <ion-header>
 
-  <ion-navbar>
+  <ion-navbar >
     <ion-title>Settings</ion-title>
   </ion-navbar>
 
@@ -15,8 +15,8 @@
 
 <ion-content padding>
   <form>
-    <ion-grid>
-      <ion-card class="card">
+    <ion-card class="card">
+      <ion-grid>
         <ion-card-header>
           <ion-label> Units </ion-label>
         </ion-card-header>
@@ -65,7 +65,16 @@
 
           </ion-grid>
         </ion-card-content>
-      </ion-card>
-    </ion-grid>
+      </ion-grid>
+    </ion-card>
   </form>
+  <ion-card>
+    <ion-card-header>
+      Setting theme
+    </ion-card-header>
+    <ion-card-content>
+      <button class="pop-in" ion-button (click)="changeTheme('')">Default</button>
+      <button class="pop-in" ion-button color="dark" (click)="changeTheme('theme-dark')">Dark</button>
+    </ion-card-content>
+  </ion-card>
 </ion-content>

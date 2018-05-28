@@ -49,7 +49,6 @@ export class HomePage {
     // this.sort = {TemplateName: 'Dozing'}
 
     this.listTemplate.unshift({TemplateName: 'All'});
-    console.log('List Template 1: ', this.listTemplate);
 
     this.template = 'All';
 
