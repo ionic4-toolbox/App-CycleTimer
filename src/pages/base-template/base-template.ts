@@ -43,6 +43,7 @@ export class BaseTemplatePage {
   }
 
   init(){
+
     this.item = this.navParams.data;
     console.log('item: ', this.item)
     this.listTemplate = this.database.getListTemplate();
