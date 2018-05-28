@@ -10,7 +10,7 @@
     <ion-title>Home</ion-title>
 
     <ion-buttons end>
-      <button ion-button (click)="nextPageSettings()">
+      <button ion-button (click)="onclickSettings()">
         <ion-icon name="settings"></ion-icon>
       </button>
     </ion-buttons>
@@ -21,7 +21,7 @@
 
 <ion-content padding class="content">
   <div text-center>
-    <button ion-button round outline (click)="onclickStudyType()">New Study</button>
+    <button ion-button round outline (click)="onclickNewStudy()">New Study</button>
   </div>
   <ion-list-header>
     Recent Studies
@@ -29,22 +29,24 @@
   
   <ion-item>
     <ion-label>Search Template</ion-label>
-    <ion-select (ionChange)="getStudyByTemplateName($event)">
+    <ion-select [(ngModel)]="template" (ionChange)="getStudyByTemplateName($event)">
       <ion-option *ngFor="let o of listTemplate" [value]="o.TemplateName" >{{o.TemplateName}}</ion-option>
     </ion-select>
   </ion-item>
 
-  <ion-item-sliding #slidingItem *ngFor="let study of listStudy; let i = index; ">
-    <ion-item #item>
-      <ion-icon item-start color="danger" name="remove-circle" (click)="openOption(slidingItem, item, $event)"></ion-icon> {{study.StudyName}}
-    </ion-item>
-    <ion-item-options item-start>
-      <button ion-button expandable (click)="sendEmail(study, i)">
+  <ion-list >
+    <ion-item *ngFor="let study of listStudy; let i = index;">
+      <ion-label>
+        {{study.StudyName}}
+      </ion-label>
+
+      <button ion-button expandable item-content clear (click)="sendEmail(study, i)">
         <ion-icon name="mail"></ion-icon>
       </button>
-      <button color="danger" ion-button expandable (click)="deleteItem(study, i)">
-        <ion-icon name="trash" ></ion-icon>
+      <button ion-button icon-only item-end clear (click)="presentActionSheet(study, i)">
+          <ion-icon name="more"></ion-icon>
       </button>
-    </ion-item-options>
-  </ion-item-sliding>
+    </ion-item>
+  </ion-list>
+
 </ion-content>
