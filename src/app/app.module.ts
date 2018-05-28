@@ -36,6 +36,12 @@ import {TestTimerComponent} from "../components/test-timer/test-timer";
 import {EmailComposer} from "@ionic-native/email-composer";
 import {ThemingPage} from "../pages/theming/theming";
 import {AppState} from "./app.global";
+import {DozingTypeComponent} from "../components/dozing-type/dozing-type";
+import {LoadingTypeComponent} from "../components/loading-type/loading-type";
+import {DrillingTypeComponent} from "../components/drilling-type/drilling-type";
+import {HaulingFullCycleTypeComponent} from "../components/hauling-full-cycle-type/hauling-full-cycle-type";
+import {TrenchingExcavatingTypeComponent} from "../components/trenching-excavating-type/trenching-excavating-type";
+import {HaulingTypeComponent} from "../components/hauling-type/hauling-type";
 
 export const components = [
   Timer,
@@ -43,7 +49,13 @@ export const components = [
   TimerPit,
   TimerRepit,
   TimerProgress,
-  TestTimerComponent
+  TestTimerComponent,
+  DozingTypeComponent,
+  LoadingTypeComponent,
+  DrillingTypeComponent,
+  HaulingFullCycleTypeComponent,
+  TrenchingExcavatingTypeComponent,
+  HaulingTypeComponent
 ];
 
 @NgModule({

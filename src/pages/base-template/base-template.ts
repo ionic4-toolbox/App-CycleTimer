@@ -29,12 +29,10 @@ export class BaseTemplatePage {
 
   public entityStudy : Study;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public database: DatabaseProvider, private alertCtrl: AlertController,
-     private utilities: UtilitiesProvider, private constant: ConstantProvider) {
-    this.item = this.navParams.data;
-    this.studyDate = this.utilities.getStudyDate().slice(0,10);
-    console.log(this.studyDate);
+  public checkCurrentTemplate : any;
 
+  constructor(public navCtrl: NavController, public navParams: NavParams, public database: DatabaseProvider, private alertCtrl: AlertController, private utilities: UtilitiesProvider, private constant: ConstantProvider)
+  {
     this.init();
   }
 
@@ -43,6 +41,14 @@ export class BaseTemplatePage {
   }
 
   init(){
+    this.item = this.navParams.data;
+    switch (this.item){
+      case this.constant
+    }
+
+    this.studyDate = this.utilities.getStudyDate().slice(0,10);
+    console.log(this.studyDate);
+
     this.materialType = this.database.getMaterial();
     this.listSegments = this.constant.ListSegments;
   }

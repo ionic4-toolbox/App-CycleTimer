@@ -121,30 +121,9 @@
         </ion-grid>
       </ion-card-content>
     </ion-card>
-    <ion-card>
-      <ion-card-content>
-        <ion-grid>
-          <ion-row>
-            <ion-col col-4>
-              <ion-label>Loading Unit</ion-label>
-            </ion-col>
-            <ion-col col-8>
-              <ion-input class="borderInput" [(ngModel)]="form.LoadingUnit" name="LoadingUnit"></ion-input>
-            </ion-col>
-          </ion-row>
 
-          <ion-row>
-            <ion-col col-4>
-              <ion-label>Blade Type</ion-label>
-            </ion-col>
-            <ion-col col-8>
-              <ion-input class="borderInput" [(ngModel)]="form.BladeType" name="BladeType"></ion-input>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
-      </ion-card-content>
-    </ion-card>
-    
+    <dozing-type></dozing-type>
+
     <ion-card class="card">
       <ion-card-header>
         <ion-label> Segments </ion-label>
