@@ -30,15 +30,15 @@ export class NewTemplatePage {
 
 
   addFieldTextbox(){
-    this.fieldTextboxArray.push({'text':''});
+    this.fieldTextboxArray.push({text: ''});
   }
 
   addFieldNumber(){
-    this.fieldNumberArray.push({'number':''});
+    this.fieldNumberArray.push({number: ''});
   }
 
   addSection(){
-    this.sectionArray.push({'section':''});
+    this.sectionArray.push({section: ''});
   }
 
   cancelNewTemplate(){
@@ -46,9 +46,7 @@ export class NewTemplatePage {
   }
 
   saveNewTemplate(form){
-
-    console.log(this.sectionArray)
-    console.log(this.fieldTextboxArray)
+    
     console.log(form.value)
     
   }

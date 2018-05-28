@@ -41,7 +41,7 @@
               <ion-label>Field {{i+1}}</ion-label>
             </ion-col>
             <ion-col col-8>
-              <ion-input class="borderInput" [(ngModel)]="fieldTextboxArray[i].text" name="text" required></ion-input>
+              <ion-input class="borderInput" [(ngModel)]="fieldTextboxArray[i].text" name="text{{i+1}}" required></ion-input>
             </ion-col>
           </ion-row>
         </ion-grid>
@@ -93,7 +93,7 @@
               <ion-label>Section {{i+1}}</ion-label>
             </ion-col>
             <ion-col col-8>
-              <ion-input class="borderInput" [(ngModel)]="sectionArray[i].section" name="section" required></ion-input>
+              <ion-input class="borderInput" [(ngModel)]="sectionArray[i].section" name="section{{i+1}}" required></ion-input>
             </ion-col>
           </ion-row>
         </ion-grid>
