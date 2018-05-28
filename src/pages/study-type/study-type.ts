@@ -4,6 +4,7 @@ import { NewTemplatePage } from '../new-template/new-template';
 import { DatabaseProvider } from '../../providers/database/database';
 import { Template } from '../../model/Template';
 import { BaseTemplatePage } from '../base-template/base-template';
+import {ThemingPage} from "../theming/theming";
 
 /**
  * Generated class for the StudyTypePage page.
@@ -36,6 +37,10 @@ export class StudyTypePage {
 
   itemTapped(event, item) {
     this.navCtrl.push(BaseTemplatePage, item);
+  }
+
+  onClickTheme(){
+    this.navCtrl.push(ThemingPage)
   }
 
 }

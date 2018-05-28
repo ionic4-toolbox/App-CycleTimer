@@ -34,6 +34,8 @@ import { TimerPit } from '../components/countdown-timer/timer-pit';
 import { TimerRepit } from '../components/countdown-timer/timer-repit';
 import {TestTimerComponent} from "../components/test-timer/test-timer";
 import {EmailComposer} from "@ionic-native/email-composer";
+import {ThemingPage} from "../pages/theming/theming";
+import {AppState} from "./app.global";
 
 export const components = [
   Timer,
@@ -54,6 +56,7 @@ export const components = [
     BaseTemplatePage,
     StudyPage,
     SettingsPage,
+    ThemingPage,
     components
   ],
   imports: [
@@ -70,7 +73,8 @@ export const components = [
     NewTemplatePage,
     BaseTemplatePage,
     StudyPage,
-    SettingsPage
+    SettingsPage,
+    ThemingPage
   ],
   providers: [
     StatusBar,
@@ -88,7 +92,8 @@ export const components = [
     ConstantProvider,
     NewTemplateProvider,
     StudyTypeProvider,
-    HomeProvider
+    HomeProvider,
+    AppState
   ]
 })
 
