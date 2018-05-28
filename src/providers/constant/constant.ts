@@ -21,6 +21,16 @@ export class ConstantProvider {
     {TemplateName: 'Trenching/Excavating'}
   ]
 
+  public TemplatesObject={
+     TemplateHauling : 'HauLing',
+     TemplateDrilling : 'Drills',
+     TemplateDozing : 'Dozing',
+     TemplateHaulingUnit : 'Hauling Unit',
+     TemplateLoadingUnit : 'Loading Unit',
+     TemplateHaulingUnitFullCycle : 'Hauling Unit (Full Cycle)',
+     TemplateTrenching : 'Trenching/Excavating'
+  }
+
   public ListMaterial = [
     {MaterialName : 'Stone'},
     {MaterialName : 'Soil'},

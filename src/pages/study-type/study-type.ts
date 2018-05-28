@@ -36,6 +36,7 @@ export class StudyTypePage {
   }
 
   itemTapped(event, item) {
+    console.log('item push: ', item)
     this.navCtrl.push(BaseTemplatePage, item);
   }
 

@@ -6,6 +6,7 @@ import { UtilitiesProvider } from '../../providers/utilities/utilities';
 import { ConstantProvider } from '../../providers/constant/constant';
 import { StudyPage } from '../study/study';
 import { StudyTypePage } from '../study-type/study-type';
+import {Template} from "../../model/Template";
 
 /**
  * Generated class for the BaseTemplatePage page.
@@ -29,7 +30,8 @@ export class BaseTemplatePage {
 
   public entityStudy : Study;
 
-  public checkCurrentTemplate : any;
+  public listTemplate : Template;
+  public templates : any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public database: DatabaseProvider, private alertCtrl: AlertController, private utilities: UtilitiesProvider, private constant: ConstantProvider)
   {
@@ -42,9 +44,12 @@ export class BaseTemplatePage {
 
   init(){
     this.item = this.navParams.data;
-    switch (this.item){
-      case this.constant
-    }
+    console.log('item: ', this.item)
+    this.listTemplate = this.database.getListTemplate();
+    this.templates = this.constant.TemplatesObject;
+    console.log('list Template: ', this.listTemplate)
+
+    //console.log(this.item.TemplateName + '++++++++++++++++' + this.templates.TemplateHaulingUnitFullCycle)
 
     this.studyDate = this.utilities.getStudyDate().slice(0,10);
     console.log(this.studyDate);
