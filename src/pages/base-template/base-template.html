@@ -125,13 +125,13 @@
     <ion-card>
       <ion-card-content>
         <ion-grid>
-          <ion-row *ngFor="let field of item.ListFields">
+          <ion-row *ngFor="let field of ListFields; let i = index">
             <ion-col col-4>
               <ion-label>{{field.FieldName}}</ion-label>
             </ion-col>
             <ion-col col-8>
-              <ion-input *ngIf="field.FieldType == fieldsType.FieldTextBox" class="borderInput" name="LoadingUnit"></ion-input>
-              <ion-input *ngIf="field.FieldType == fieldsType.FieldNumber" type="number" class="borderInput" name="LoadingUnit"></ion-input>
+            <ion-input *ngIf="field.FieldType == fieldsType.FieldTextBox" (ngModel)="form.field.FieldName" class="borderInput" name="{{field.FieldNameKey}}" required></ion-input>
+              <ion-input *ngIf="field.FieldType == fieldsType.FieldNumber" type="number" class="borderInput" name="LoadingUnit" required></ion-input>
               <ion-select *ngIf="field.FieldType == fieldsType.FieldOption">
                 <ion-option value="opt1" >Option 1</ion-option>
               </ion-select>

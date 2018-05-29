@@ -34,6 +34,7 @@ export class BaseTemplatePage {
   public templates : any;
 
   public fieldsType: any;
+  public ListFields:any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public database: DatabaseProvider, private alertCtrl: AlertController, private utilities: UtilitiesProvider, private constant: ConstantProvider)
   {
@@ -46,8 +47,11 @@ export class BaseTemplatePage {
 
   init(){
     this.fieldsType = this.constant.FieldType;
+
     console.log(this.fieldsType);
     this.item = this.navParams.data;
+
+    this.ListFields = this.item.ListFields;
     console.log('item: ', this.item)
     this.listTemplate = this.database.getListTemplate();
     this.templates = this.constant.TemplatesObject;

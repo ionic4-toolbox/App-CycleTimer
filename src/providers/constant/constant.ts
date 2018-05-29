@@ -64,8 +64,8 @@ export class ConstantProvider {
   ]
 
   public ListFieldsDozing =[
-    {FieldName : 'Loading Unit', FieldType: this.FieldType.FieldTextBox},
-    {FieldName : 'Blade Type',FieldType : this.FieldType.FieldTextBox}
+    {FieldName : 'Loading Unit', FieldType: this.FieldType.FieldTextBox, FieldNameKey: 'LoadingUnit'},
+    {FieldName : 'Blade Type',FieldType : this.FieldType.FieldTextBox, FieldNameKey: 'BladeType'}
   ]
   //----------------HAULING---------------
 
@@ -83,11 +83,11 @@ export class ConstantProvider {
   ]
 
   public ListFieldsHauling =[
-    {FieldName : 'Loading Unit', FieldType: this.FieldType.FieldTextBox},
-    {FieldName : 'Bucket Size',FieldType : this.FieldType.FieldNumber},
-    {FieldName : 'Hauling Unit', FieldType: this.FieldType.FieldTextBox},
-    {FieldName : 'Body Size', FieldType: this.FieldType.FieldNumber},
-    {FieldName : 'Filtering System', FieldType : this.FieldType.FieldToggle}
+    {FieldName : 'Loading Unit', FieldType: this.FieldType.FieldTextBox, FieldNameKey: 'LoadingUnit'},
+    {FieldName : 'Bucket Size',FieldType : this.FieldType.FieldNumber, FieldNameKey: 'BucketSize'},
+    {FieldName : 'Hauling Unit', FieldType: this.FieldType.FieldTextBox, FieldNameKey: 'HaulingUnit'},
+    {FieldName : 'Body Size', FieldType: this.FieldType.FieldNumber, FieldNameKey: 'BodySize'},
+    {FieldName : 'Filtering System', FieldType : this.FieldType.FieldToggle, FieldNameKey: 'FilteringSystem'}
   ]
   //-------------------LOADING
 
@@ -99,11 +99,11 @@ export class ConstantProvider {
   ]
 
   public ListFieldsLoading =[
-    {FieldName : 'Loading Unit', FieldType: this.FieldType.FieldTextBox},
-    {FieldName : 'Bucket Size',FieldType : this.FieldType.FieldNumber},
-    {FieldName : 'Hauling Unit', FieldType: this.FieldType.FieldTextBox},
-    {FieldName : 'Body Size', FieldType: this.FieldType.FieldNumber},
-    {FieldName : 'Filtering System', FieldType : this.FieldType.FieldToggle}
+    {FieldName : 'Loading Unit', FieldType: this.FieldType.FieldTextBox, FieldNameKey: 'LoadingUnit'},
+    {FieldName : 'Bucket Size',FieldType : this.FieldType.FieldNumber, FieldNameKey: 'BucketSize'},
+    {FieldName : 'Hauling Unit', FieldType: this.FieldType.FieldTextBox, FieldNameKey: 'HaulingUnit'},
+    {FieldName : 'Body Size', FieldType: this.FieldType.FieldNumber, FieldNameKey: 'BodySize'},
+    {FieldName : 'Filtering System', FieldType : this.FieldType.FieldToggle, FieldNameKey: 'FilteringSystem'}
   ]
 
   //------------HAULINGFC--------------
@@ -112,11 +112,11 @@ export class ConstantProvider {
   ]
 
   public ListFieldsHaulingFC =[
-    {FieldName : 'Loading Unit', FieldType: this.FieldType.FieldTextBox},
-    {FieldName : 'Bucket Size',FieldType : this.FieldType.FieldNumber},
-    {FieldName : 'Hauling Unit', FieldType: this.FieldType.FieldTextBox},
-    {FieldName : 'Body Size', FieldType: this.FieldType.FieldNumber},
-    {FieldName : 'Filtering System', FieldType : this.FieldType.FieldToggle}
+    {FieldName : 'Loading Unit', FieldType: this.FieldType.FieldTextBox, FieldNameKey: 'LoadingUnit'},
+    {FieldName : 'Bucket Size',FieldType : this.FieldType.FieldNumber, FieldNameKey: 'BucketSize'},
+    {FieldName : 'Hauling Unit', FieldType: this.FieldType.FieldTextBox, FieldNameKey: 'HaulingUnit'},
+    {FieldName : 'Body Size', FieldType: this.FieldType.FieldNumber, FieldNameKey: 'BodySize'},
+    {FieldName : 'Filtering System', FieldType : this.FieldType.FieldToggle, FieldNameKey: 'FilteringSystem'}
   ]
 
   //----------------Treching/Excavationg
@@ -129,9 +129,9 @@ export class ConstantProvider {
   ]
 
   public ListFieldsTrechingExcavating =[
-    {FieldName : 'Loading Unit', FieldType: this.FieldType.FieldTextBox},
-    {FieldName : 'Bucket Size',FieldType : this.FieldType.FieldNumber},
-    {FieldName : 'Average Fill Factor', FieldType: this.FieldType.FieldNumber},
+    {FieldName : 'Loading Unit', FieldType: this.FieldType.FieldTextBox, FieldNameKey: 'LoadingUnit'},
+    {FieldName : 'Bucket Size',FieldType : this.FieldType.FieldNumber, FieldNameKey: 'BucketSize'},
+    {FieldName : 'Average Fill Factor', FieldType: this.FieldType.FieldNumber, FieldNameKey: 'AverageFillFactor'},
   ]
 
   ///////-----------DRILLING -----------------
@@ -148,10 +148,10 @@ export class ConstantProvider {
   ]
 
   public ListFieldsDrilling =[
-    {FieldName : 'Drill Type', FieldType: this.FieldType.FieldOption},
-    {FieldName : 'Machine Manufacturer',FieldType : this.FieldType.FieldOption},
-    {FieldName : 'Machine Model', FieldType: this.FieldType.FieldOption},
-    {FieldName : 'Position Mast/Boom', FieldType: this.FieldType.FieldToggle},
+    {FieldName : 'Drill Type', FieldType: this.FieldType.FieldOption, FieldNameKey: 'DrillType'},
+    {FieldName : 'Machine Manufacturer',FieldType : this.FieldType.FieldOption, FieldNameKey: 'MachineManufacturer'},
+    {FieldName : 'Machine Model', FieldType: this.FieldType.FieldOption, FieldNameKey: 'MachineModel'},
+    {FieldName : 'Position Mast/Boom', FieldType: this.FieldType.FieldToggle, FieldNameKey: 'PositionMastBoom'},
   ]
 
   // ------------------TEMPLATE-------------
