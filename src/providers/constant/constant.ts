@@ -159,7 +159,7 @@ export class ConstantProvider {
     {TemplateName: 'Drilling',ListFields : this.ListFieldsDrilling, ListSegment: this.ListSegmentsDrilling},
     {TemplateName: 'Dozing',ListFields : this.ListFieldsDozing, ListSegment: this.ListSegmentsDozing},
     {TemplateName: 'Hauling Unit',ListFields : this.ListFieldsHauling, ListSegment: this.ListSegmentsHauling},
-    {TemplateName: 'Loading Unit',ListFields : this.ListFieldsLoading, ListSegment: this.ListFieldsLoading},
+    {TemplateName: 'Loading Unit',ListFields : this.ListFieldsLoading, ListSegment: this.ListSegmentsLoading},
     {TemplateName: 'Hauling Unit (Full Cycle)',ListFields : this.ListFieldsHaulingFC, ListSegment: this.ListSegmentsHaulingFC},
     {TemplateName: 'Trenching/Excavating',ListFields : this.ListFieldsTrechingExcavating, ListSegment: this.ListSegmentsTrechingExcavating}
   ]

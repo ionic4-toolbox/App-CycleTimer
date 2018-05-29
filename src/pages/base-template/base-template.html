@@ -14,7 +14,7 @@
 
 
 <ion-content padding class="content">
-  <form #form="ngForm" (ngSubmit)="beginStudy(form, item.TemplateName)" novalidate>
+  <form #form="ngForm" (ngSubmit)="beginStudy(form, item.TemplateName, ListFields)" novalidate>
     <ion-card class="card">
       <ion-card-content>
         <ion-grid>
@@ -130,12 +130,12 @@
               <ion-label>{{field.FieldName}}</ion-label>
             </ion-col>
             <ion-col col-8>
-            <ion-input *ngIf="field.FieldType == fieldsType.FieldTextBox" (ngModel)="form.field.FieldName" class="borderInput" name="{{field.FieldNameKey}}" required></ion-input>
-              <ion-input *ngIf="field.FieldType == fieldsType.FieldNumber" type="number" class="borderInput" name="LoadingUnit" required></ion-input>
-              <ion-select *ngIf="field.FieldType == fieldsType.FieldOption">
+            <ion-input *ngIf="field.FieldType == fieldsType.FieldTextBox" (ngModel)="form.text.field.FieldName" class="borderInput" name="{{field.FieldNameKey}}" required></ion-input>
+              <ion-input *ngIf="field.FieldType == fieldsType.FieldNumber" type="number" class="borderInput" (ngModel)="form.number.field.FieldName" name="{{field.FieldNameKey}}" required></ion-input>
+              <ion-select *ngIf="field.FieldType == fieldsType.FieldOption" (ngModel)="form.option.field.FieldName" name="{{field.FieldNameKey}}" >
                 <ion-option value="opt1" >Option 1</ion-option>
               </ion-select>
-              <ion-toggle *ngIf="field.FieldType == fieldsType.FieldToggle" checked="" ></ion-toggle>
+              <ion-toggle *ngIf="field.FieldType == fieldsType.FieldToggle" (ngModel)="form.option.field.FieldName" name="{{field.FieldNameKey}}" checked="" ></ion-toggle>
             </ion-col>
           </ion-row>
 

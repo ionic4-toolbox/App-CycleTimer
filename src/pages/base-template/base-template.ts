@@ -23,7 +23,14 @@ import {Template} from "../../model/Template";
 export class BaseTemplatePage {
 
   public item:any;
-  public form:any = {};
+  public form:any = {
+    template: {},
+    text: {},
+    number: {},
+    option: {},
+    toggle: {}
+  };
+  
   public studyDate: any;
   public materialType = [];
   public listSegments = [];
@@ -31,7 +38,6 @@ export class BaseTemplatePage {
   public entityStudy : Study;
 
   public listTemplate : Template;
-  public templates : any;
 
   public fieldsType: any;
   public ListFields:any;
@@ -54,7 +60,6 @@ export class BaseTemplatePage {
     this.ListFields = this.item.ListFields;
     console.log('item: ', this.item)
     this.listTemplate = this.database.getListTemplate();
-    this.templates = this.constant.TemplatesObject;
     console.log('list Template: ', this.listTemplate)
 
 
@@ -78,10 +83,24 @@ export class BaseTemplatePage {
 
 
 
-  beginStudy(form, item){
+  beginStudy(form, item, listFieldKey){
     this.entityStudy = form.value;
     this.entityStudy.TemplateName = item;
-    console.log('test :', this.entityStudy)
+    console.log('entityStudy :', this.entityStudy)
+    console.log('listFieldKey', listFieldKey);
+
+    let keys = [];
+    let Templates = [];
+
+    for(let i = 0; i < listFieldKey.length; i++){
+      keys.push(listFieldKey[i].FieldNameKey);
+      Templates.push(this.entityStudy[keys[i]]);
+
+    }
+
+    console.log('key: ',keys)
+    console.log('template: ',Templates)
+
 
     if ( !form.valid || this.entityStudy.StudyName == ''){
 
