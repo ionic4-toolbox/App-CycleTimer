@@ -11,14 +11,12 @@ import { Template } from '../../model/Template';
 @Injectable()
 export class ConstantProvider {
 
-  public ListTemplateType = [
-    {TemplateName: 'Drilling'},
-    {TemplateName: 'Dozing'},
-    {TemplateName: 'Hauling Unit'},
-    {TemplateName: 'Loading Unit'},
-    {TemplateName: 'Hauling Unit (Full Cycle)'},
-    {TemplateName: 'Trenching/Excavating'}
-  ]
+  public FieldType ={
+    FieldTextBox : 'Textbox',
+    FieldNumber : 'Number',
+    FieldOption  : 'Option',
+    FieldToggle : 'Toggle'
+  }
 
   public TemplatesObject={
      TemplateDrilling : 'Drilling',
@@ -44,55 +42,126 @@ export class ConstantProvider {
   public strAddItemErr = {
       title: 'Add Item Failed',
       subTitle: 'Duplicate Item Name in Your Db !'
+  };
+  public strCreateNewTemplateErr = {
+    title: 'Invalid some Field',
+    subTitle: 'Please enter some field !'
   }
 
-  public ListSegmentsDozing = [
-    {name: 'Begin Load'},
-    {name: 'Begin Carry'},
-    {name: 'Leave Pit'},
-    {name: 'ReEnter Pit'},
+  public strAddTemplateErr = {
+    title: 'Add Template Failed',
+    subTitle: 'Duplicate Template Name in Your Db !'
+  }
 
+
+  //--------------DOZONG-------------------
+
+  public ListSegmentsDozing = [
+    {SectionName : 'Begin Load'},
+    {SectionName : 'Begin Carry'},
+    {SectionName : 'Leave Pit'},
+    {SectionName : 'ReEnter Pit'},
   ]
+
+  public ListFieldsDozing =[
+    {FieldName : 'Loading Unit', FieldType: this.FieldType.FieldTextBox},
+    {FieldName : 'Blade Type',FieldType : this.FieldType.FieldTextBox}
+  ]
+  //----------------HAULING---------------
+
   public ListSegmentsHauling =[
-    {name: 'Enter Load Area'},
-    {name: 'Begin Exchange'},
-    {name: 'End Load'},
-    {name: 'Enter Scales'},
-    {name: 'Leave Scales'},
-    {name: 'Leave Load Area'},
-    {name: 'Enter Dump Area'},
-    {name: 'Begin Dump'},
-    {name: 'End Dump'},
-    {name: 'Leave Dump Area'}
+    {SectionName: 'Enter Load Area'},
+    {SectionName: 'Begin Exchange'},
+    {SectionName: 'End Load'},
+    {SectionName: 'Enter Scales'},
+    {SectionName: 'Leave Scales'},
+    {SectionName: 'Leave Load Area'},
+    {SectionName: 'Enter Dump Area'},
+    {SectionName: 'Begin Dump'},
+    {SectionName: 'End Dump'},
+    {SectionName: 'Leave Dump Area'}
   ]
+
+  public ListFieldsHauling =[
+    {FieldName : 'Loading Unit', FieldType: this.FieldType.FieldTextBox},
+    {FieldName : 'Bucket Size',FieldType : this.FieldType.FieldNumber},
+    {FieldName : 'Hauling Unit', FieldType: this.FieldType.FieldTextBox},
+    {FieldName : 'Body Size', FieldType: this.FieldType.FieldNumber},
+    {FieldName : 'Filtering System', FieldType : this.FieldType.FieldToggle}
+  ]
+  //-------------------LOADING
 
   public ListSegmentsLoading =[
-    {name: 'Begin Dump'},
-    {name: 'End Dump'},
-    {name: 'Begin Load'},
-    {name: 'End Load'},
+    {SectionName: 'Begin Dump'},
+    {SectionName: 'End Dump'},
+    {SectionName: 'Begin Load'},
+    {SectionName: 'End Load'},
   ]
 
-  public ListSegmentsHaulingFC =[
-    {name : 'Begin Load'}
+  public ListFieldsLoading =[
+    {FieldName : 'Loading Unit', FieldType: this.FieldType.FieldTextBox},
+    {FieldName : 'Bucket Size',FieldType : this.FieldType.FieldNumber},
+    {FieldName : 'Hauling Unit', FieldType: this.FieldType.FieldTextBox},
+    {FieldName : 'Body Size', FieldType: this.FieldType.FieldNumber},
+    {FieldName : 'Filtering System', FieldType : this.FieldType.FieldToggle}
   ]
+
+  //------------HAULINGFC--------------
+  public ListSegmentsHaulingFC =[
+    {SectionName : 'Begin Load'}
+  ]
+
+  public ListFieldsHaulingFC =[
+    {FieldName : 'Loading Unit', FieldType: this.FieldType.FieldTextBox},
+    {FieldName : 'Bucket Size',FieldType : this.FieldType.FieldNumber},
+    {FieldName : 'Hauling Unit', FieldType: this.FieldType.FieldTextBox},
+    {FieldName : 'Body Size', FieldType: this.FieldType.FieldNumber},
+    {FieldName : 'Filtering System', FieldType : this.FieldType.FieldToggle}
+  ]
+
+  //----------------Treching/Excavationg
 
   public ListSegmentsTrechingExcavating =[
-    {name: 'Begin Dump'},
-    {name: 'End Dump'},
-    {name: 'Begin Load'},
-    {name: 'End Load'},
+    {SectionName: 'Begin Dump'},
+    {SectionName: 'End Dump'},
+    {SectionName: 'Begin Load'},
+    {SectionName: 'End Load'},
   ]
 
+  public ListFieldsTrechingExcavating =[
+    {FieldName : 'Loading Unit', FieldType: this.FieldType.FieldTextBox},
+    {FieldName : 'Bucket Size',FieldType : this.FieldType.FieldNumber},
+    {FieldName : 'Average Fill Factor', FieldType: this.FieldType.FieldNumber},
+  ]
+
+  ///////-----------DRILLING -----------------
+
   public ListSegmentsDrilling =[
-    {name: 'Begin Tram'},
-    {name: 'Begin Level'},
-    {name: 'Begin Position Mast'},
-    {name: 'Begin Collar'},
-    {name: 'Begin Drill'},
-    {name: 'Begin Retract'},
-    {name: 'Begin Position Mast'},
-    {name: 'Begin Un-Jack Machine'}
+    {SectionName: 'Begin Tram'},
+    {SectionName: 'Begin Level'},
+    {SectionName: 'Begin Position Mast'},
+    {SectionName: 'Begin Collar'},
+    {SectionName: 'Begin Drill'},
+    {SectionName: 'Begin Retract'},
+    {SectionName: 'Begin Position Mast'},
+    {SectionName: 'Begin Un-Jack Machine'}
+  ]
+
+  public ListFieldsDrilling =[
+    {FieldName : 'Drill Type', FieldType: this.FieldType.FieldOption},
+    {FieldName : 'Machine Manufacturer',FieldType : this.FieldType.FieldOption},
+    {FieldName : 'Machine Model', FieldType: this.FieldType.FieldOption},
+    {FieldName : 'Position Mast/Boom', FieldType: this.FieldType.FieldToggle},
+  ]
+
+  // ------------------TEMPLATE-------------
+  public ListTemplateType = [
+    {TemplateName: 'Drilling',ListFields : this.ListFieldsDrilling, ListSegment: this.ListSegmentsDrilling},
+    {TemplateName: 'Dozing',ListFields : this.ListFieldsDozing, ListSegment: this.ListSegmentsDozing},
+    {TemplateName: 'Hauling Unit',ListFields : this.ListFieldsHauling, ListSegment: this.ListSegmentsHauling},
+    {TemplateName: 'Loading Unit',ListFields : this.ListFieldsLoading, ListSegment: this.ListFieldsLoading},
+    {TemplateName: 'Hauling Unit (Full Cycle)',ListFields : this.ListFieldsHaulingFC, ListSegment: this.ListSegmentsHaulingFC},
+    {TemplateName: 'Trenching/Excavating',ListFields : this.ListFieldsTrechingExcavating, ListSegment: this.ListSegmentsTrechingExcavating}
   ]
 
 

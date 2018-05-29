@@ -1,5 +1,9 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import {UtilitiesProvider} from "../../providers/utilities/utilities";
+import {ConstantProvider} from "../../providers/constant/constant";
+import {BaseProvider} from "../../providers/base/base";
+import {StudyTypePage} from "../study-type/study-type";
 
 /**
  * Generated class for the NewTemplatePage page.
@@ -19,9 +23,9 @@ export class NewTemplatePage {
   public sectionArray:any = [];
   public fieldTextboxArray:any = [];
   public fieldNumberArray:any = [];
-  
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  public checkAddTemplate: boolean;
+  constructor(public navCtrl: NavController, public navParams: NavParams, private utilities: UtilitiesProvider, private constant: ConstantProvider, private base: BaseProvider) {
   }
 
   ionViewDidLoad() {
@@ -30,7 +34,7 @@ export class NewTemplatePage {
 
 
   addFieldTextbox(){
-    this.fieldTextboxArray.push({text: ''});
+    this.fieldTextboxArray.push({FieldName: ''});
   }
 
   addFieldNumber(){
@@ -38,7 +42,7 @@ export class NewTemplatePage {
   }
 
   addSection(){
-    this.sectionArray.push({section: ''});
+    this.sectionArray.push({SectionName: ''});
   }
 
   cancelNewTemplate(){
@@ -46,8 +50,40 @@ export class NewTemplatePage {
   }
 
   saveNewTemplate(form){
-    
-    console.log(form.value)
-    
+
+    let entity = form.value;
+    console.log('Entity: ', entity)
+    if (entity.TemplateName == '' || entity.TemplateName == null){
+      this.utilities.alertNotificationErr(this.constant.strCreateNewTemplateErr.title, this.constant.strCreateNewTemplateErr.subTitle)
+    }
+    else {
+      console.log('form : ',form.value);
+      let listField = [];
+      let listSection =[];
+      for (let i=0; i< this.fieldTextboxArray.length; i++){
+
+        if (this.fieldTextboxArray[i].FieldName !=''){
+          this.fieldTextboxArray[i].FieldType = this.constant.FieldType.FieldTextBox;
+          listField.push(this.fieldTextboxArray[i]);
+        }
+      }
+      for (let i=0;i< this.sectionArray.length; i++){
+        if (this.sectionArray[i].SectionName != ''){
+          listSection.push(this.sectionArray[i]);
+        }
+      }
+
+      this.checkAddTemplate = this.base.saveNewTemplate(entity,listField,listSection);
+      console.log('CHECK ADD ITEM: ', this.checkAddTemplate)
+
+      if (!this.checkAddTemplate){
+        this.utilities.alertNotificationErr(this.constant.strAddTemplateErr.title, this.constant.strAddTemplateErr.subTitle)
+      } else {
+        this.navCtrl.push(StudyTypePage);
+      }
+    }
+
+
+
   }
 }

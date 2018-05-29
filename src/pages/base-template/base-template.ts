@@ -33,6 +33,8 @@ export class BaseTemplatePage {
   public listTemplate : Template;
   public templates : any;
 
+  public fieldsType: any;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, public database: DatabaseProvider, private alertCtrl: AlertController, private utilities: UtilitiesProvider, private constant: ConstantProvider)
   {
     this.init();
@@ -43,7 +45,8 @@ export class BaseTemplatePage {
   }
 
   init(){
-
+    this.fieldsType = this.constant.FieldType;
+    console.log(this.fieldsType);
     this.item = this.navParams.data;
     console.log('item: ', this.item)
     this.listTemplate = this.database.getListTemplate();
@@ -63,29 +66,13 @@ export class BaseTemplatePage {
   getListSegment(){
     console.log('xxx', this.item.TemplateName);
     console.log(this.constant.TemplatesObject.TemplateDrilling);
-    switch (this.item.TemplateName){
-      case this.constant.TemplatesObject.TemplateHaulingUnitFullCycle:
-        this.listSegments= this.constant.ListSegmentsHaulingFC;
-        break;
-      case this.constant.TemplatesObject.TemplateDozing:
-        this.listSegments= this.constant.ListSegmentsDozing;
-        break;
-      case this.constant.TemplatesObject.TemplateDrilling:
-        this.listSegments= this.constant.ListSegmentsDrilling;
-        break;
-      case this.constant.TemplatesObject.TemplateHaulingUnit:
-        this.listSegments= this.constant.ListSegmentsHauling;
-        break;
-      case this.constant.TemplatesObject.TemplateLoadingUnit:
-        this.listSegments= this.constant.ListSegmentsLoading;
-        break;
-      case this.constant.TemplatesObject.TemplateTrenching:
-        this.listSegments= this.constant.ListSegmentsTrechingExcavating;
-        break;
-      // default:
-      //   //do something
-    }
+
+    this.listSegments = this.database.getListSegmentByTemplateName(this.item.TemplateName);
+
+    console.log('List Segment: ', this.listSegments)
   }
+
+
 
   beginStudy(form, item){
     this.entityStudy = form.value;
@@ -103,13 +90,10 @@ export class BaseTemplatePage {
         this.utilities.alertNotificationErr(this.constant.strAddItemErr.title, this.constant.strAddItemErr.subTitle)
         return;
       }
-
-      console.log('OKKKKKKKK')
       // do something push page
       this.navCtrl.push(StudyPage, this.entityStudy.StudyName)
     }
 
-    //this.navCtrl.push(StudyPage, this.entityStudy.StudyName)
   }
 
 

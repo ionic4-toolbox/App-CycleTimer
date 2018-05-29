@@ -1,6 +1,7 @@
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { ConstantProvider } from '../constant/constant';
+import {Template} from "../../model/Template";
 
 /*
   Generated class for the DatabaseProvider provider.
@@ -10,47 +11,13 @@ import { ConstantProvider } from '../constant/constant';
 */
 @Injectable()
 export class DatabaseProvider {
-
+  public template : Template;
 
   constructor(public http: Http, private constant : ConstantProvider) {
     console.log('Hello DatabaseProvider Provider');
   }
 
-  // set data template
-  setTemplate(data){
-    localStorage.setItem('template',data);
-  }
 
-  getListTemplate(){
-    if(localStorage.getItem('template') == null){
-        this.setTemplate(JSON.stringify(this.constant.ListTemplateType))
-        return this.constant.ListTemplateType;
-    }
-
-    return JSON.parse(localStorage.getItem('template'));
-  }
-
-  addNewTemplate(entity){
-    let itemName = entity.TemplateName;
-    //
-
-    let listTemplate = this.getListTemplate();
-
-    if (listTemplate == null){
-      listTemplate = [];
-    }
-
-    for (let i=0; i< listTemplate.length; i++){
-      if (listTemplate[i].TemplateName == itemName){
-        return false;
-      }
-    }
-
-    listTemplate.push(entity);
-    this.setTemplate(JSON.stringify(listTemplate));
-
-    return true;
-  }
 
   //*********************** TABLE MATERIAL *********************************
 
@@ -117,7 +84,7 @@ export class DatabaseProvider {
     let arrStudyInTemplate = [];
 
     if(templateName == 'All'){
-      
+
       let listStudy = this.getListStudy();
       return listStudy;
     }
@@ -130,5 +97,87 @@ export class DatabaseProvider {
 
     return arrStudyInTemplate;
   }
+
+  //------------- New Template -------------------
+  saveNewTemplate(formEntity, textBoxArr, sectionArr){
+    let temp1 = new Template();
+    temp1= formEntity;
+
+    let new_template= {
+      TemplateName: temp1.TemplateName,
+      ListFields : textBoxArr,
+      ListSegment : sectionArr
+    }
+
+    this.template = new_template;
+    console.log('Template: ', this.template)
+
+    let listTemplate = this.getListTemplate();
+
+    for (let i=0; i< listTemplate.length; i++){
+      if (listTemplate[i].TemplateName == temp1.TemplateName){
+
+        console.log('FAILLLLLLLLLLLLL')
+        return false;
+      }
+    }
+
+    console.log('CODE CONTINUTES')
+    listTemplate.push(this.template);
+    console.log('List Template: ', listTemplate)
+    console.log('BBBBBBBBBBBBb')
+    this.setTemplate(JSON.stringify(listTemplate));
+    console.log('CCCCCCCCCCCcc')
+    return true;
+  }
+
+  // set data template
+  setTemplate(data){
+    localStorage.setItem('template',data);
+  }
+
+  getListTemplate(){
+    if(localStorage.getItem('template') == null){
+      this.setTemplate(JSON.stringify(this.constant.ListTemplateType))
+      return this.constant.ListTemplateType;
+    }
+
+    return JSON.parse(localStorage.getItem('template'));
+  }
+
+  addNewTemplate(entity){
+    let itemName = entity.TemplateName;
+
+    let listTemplate = this.getListTemplate();
+
+    if (listTemplate == null){
+      listTemplate = [];
+    }
+
+    for (let i=0; i< listTemplate.length; i++){
+      if (listTemplate[i].TemplateName == itemName){
+        return false;
+      }
+    }
+
+    listTemplate.push(entity);
+    this.setTemplate(JSON.stringify(listTemplate));
+
+    return true;
+  }
+
+  getListSegmentByTemplateName(templateName){
+    let listTemplate = this.getListTemplate();
+
+    for (let i=0; i< listTemplate.length; i++){
+      if (listTemplate[i].TemplateName == templateName){
+        return listTemplate[i].ListSegment;
+      }
+    }
+
+    return null;
+  }
+
+
 
 }
