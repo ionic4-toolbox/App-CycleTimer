@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import {IonicPage, NavController, NavParams} from 'ionic-angular';
 import {ConstantProvider} from "../../providers/constant/constant";
 import { StudyTypePage } from '../study-type/study-type';
+import {Section} from "../../model/Section";
+import {StudyProvider} from "../../providers/study/study";
 
 /**
  * Generated class for the StudyPage page.
@@ -28,6 +30,7 @@ let processCountTimerPause;
 })
 export class StudyPage {
   public studyName : string;
+  public listSegments : Array<Section>;
 
   public checkActiveLoad : boolean = true;
   public checkActiveCarry : boolean = false;
@@ -40,7 +43,7 @@ export class StudyPage {
   public started : boolean;
   timer: CountdownTimer
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private constant : ConstantProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private constant : ConstantProvider, private studyProvider: StudyProvider) {
     this.studyName = this.navParams.data;
     console.log(this.studyName);
 
@@ -49,6 +52,10 @@ export class StudyPage {
 
   init(){
     this.checkStatus =this.constant.StatusLoad;
+
+    this.listSegments = this.studyProvider.getListSegmentByStudyName(this.studyName);
+
+    console.log('LIST SEGMENT: ', this.listSegments)
   }
 
   ionViewDidLoad() {

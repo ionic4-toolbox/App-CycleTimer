@@ -53,8 +53,10 @@ export class DatabaseProvider {
     console.log('----------STUDY PUSH GENERATE-------', item)
     //check if item name exist
     let itemName = item.StudyName;
-    // //
-    //
+    let templateName = item.TemplateName;
+
+    let listSegment = this.getListSegmentByTemplateName(templateName);
+
     let listStudy = this.getListStudy();
 
     if (listStudy == null){
@@ -76,6 +78,7 @@ export class DatabaseProvider {
     studyObject = item;
     studyObject.Template =new Template();
     studyObject.Template.ListFields = fieldsTemplate;
+    studyObject.Template.ListSegment = listSegment;
 
     console.log('Study push To DB: ', studyObject)
 
@@ -120,6 +123,19 @@ export class DatabaseProvider {
 
     return arrStudyInTemplate;
   }
+
+  getListSegmentByStudyName(studyName){
+    let listStudy = this.getListStudy();
+    for (let i=0; i<listStudy.length; i++){
+      if (listStudy[i].StudyName == studyName){
+        return listStudy[i].Template.ListSegment;
+      }
+    }
+
+    return null;
+  }
+
+
 
   //------------- New Template -------------------
   saveNewTemplate(formEntity, textBoxArr, sectionArr){
