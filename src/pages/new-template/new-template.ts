@@ -19,13 +19,24 @@ import {StudyTypePage} from "../study-type/study-type";
 })
 export class NewTemplatePage {
 
-  public form:any;
+  public form:any = {
+    FieldTypeDefault: '',
+  }
   public sectionArray:any = [];
   public fieldTextboxArray:any = [];
   public fieldNumberArray:any = [];
 
   public checkAddTemplate: boolean;
+
+  public listFieldType: any;
+  public FieldTypeDefault: any;
   constructor(public navCtrl: NavController, public navParams: NavParams, private utilities: UtilitiesProvider, private constant: ConstantProvider, private base: BaseProvider) {
+    this.init();
+  }
+
+  init(){
+    this.listFieldType = this.constant.FieldType;
+    this.form.FieldTypeDefault = this.listFieldType.FieldTextBox;
   }
 
   ionViewDidLoad() {
@@ -63,7 +74,9 @@ export class NewTemplatePage {
       for (let i=0; i< this.fieldTextboxArray.length; i++){
 
         if (this.fieldTextboxArray[i].FieldName !=''){
-          this.fieldTextboxArray[i].FieldType = this.constant.FieldType.FieldTextBox;
+          // this.fieldTextboxArray[i].FieldType = this.constant.FieldType.FieldTextBox;
+          this.fieldTextboxArray[i].FieldNameKey = this.fieldTextboxArray[i].FieldName.replace(/\s+/g, '');
+
           listField.push(this.fieldTextboxArray[i]);
         }
       }

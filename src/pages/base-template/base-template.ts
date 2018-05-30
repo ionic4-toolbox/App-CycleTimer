@@ -55,10 +55,12 @@ export class BaseTemplatePage {
   init(){
     this.fieldsType = this.constant.FieldType;
 
-    console.log(this.fieldsType);
+    console.log('fieldsType',this.fieldsType);
     this.item = this.navParams.data;
 
     this.ListFields = this.item.ListFields;
+    console.log('ListFields', this.ListFields)
+
     console.log('item: ', this.item)
     this.listTemplate = this.database.getListTemplate();
     console.log('list Template: ', this.listTemplate)

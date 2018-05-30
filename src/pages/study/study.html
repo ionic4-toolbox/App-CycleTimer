@@ -14,26 +14,54 @@
 
 <ion-content padding>
   <!--<h2>Study Timer</h2>-->
-  <form #form="ngForm" (ngSubmit)="stopStudy(form)" novalidate>
-    <ion-scroll scrollY="true" style="height: 80vh">
-      <timer #timerBeginLoad  [timeInSeconds]="0" checkStatus="{{checkStatus}}" (changeStatus)="setChangeStatus($event)" (timerLoad) = "getTimerLoad($event)"  ></timer>
-      <timer-carry #timerBeginCarry [timeInSeconds]="0" checkStatus="{{checkStatus}}" (changeStatus)="setChangeStatus($event)" (timerCarry) = "getTimerCarry($event)"></timer-carry>
-      <timer-pit #timmerLeavePit [timeInSeconds]="0" checkStatus="{{checkStatus}}" (timerLeavePit)="getTimerLeavePit($event)"></timer-pit>
-      <timer-repit #timerReEnterPit [timeInSeconds]="0" checkStatus="{{checkStatus}}" (timerReEnterPit)="getTimerReEnterPit($event)"></timer-repit>
+  <form #formRef="ngForm" novalidate>
+    <ion-scroll scrollY="true" style="height: 75vh">
+        <ion-card>
+            <ion-card-header>
+              <ion-row text-center>
+                Begin Load
+              </ion-row>
+              <button ion-button *ngIf="timeInSeconds >= 0" large block clear class="timer-button x-large">{{timer.displayTime}}</button>
+              <!--<button ion-button *ngIf="!timeInSeconds || timeInSeconds == 0" large block clear class="timer-button">Timer set up incorrectly</button>-->
+            </ion-card-header>
+          </ion-card>
       <!--<test-timer #timerBeginLoad  [timeInSeconds]="0"></test-timer>-->
 
     </ion-scroll>
-    <ion-grid>
-      <ion-row text-center>
-        <ion-col col-6>
-          <button ion-button round outline (click)="backStudy()"> Back </button>
-        </ion-col>
 
-        <ion-col col-6>
-          <button ion-button round outline type="submit"> Stop </button>
-        </ion-col>
-      </ion-row>
-    </ion-grid>
+    <div text-center>
+      <button ion-button round large outline (click)="recordTime()">Record Time</button>
+    </div>
+    
+    <ion-footer>
+      <ion-grid>
+        <ion-row>
+          <ion-col width-25>
+            <button ion-button clear (click)="backStudy()">
+              <ion-icon name="arrow-back" text-center></ion-icon>
+            </button>
+          </ion-col>
+
+          <ion-col width-25>
+            <button ion-button clear (click)="pauseStudy()">
+              <ion-icon name="pause" text-center></ion-icon>
+            </button>
+          </ion-col>
+
+          <ion-col width-25>
+            <button ion-button clear (click)="stopStudy()">
+              <ion-icon name="square" text-center></ion-icon>
+            </button>
+          </ion-col>
+
+          <ion-col width-25>
+            <button ion-button clear (click)="delayStudy()" text-center>
+              Delay
+            </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-footer>
 
   </form>
 
