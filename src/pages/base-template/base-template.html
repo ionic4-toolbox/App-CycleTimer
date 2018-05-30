@@ -135,29 +135,13 @@
               <ion-select *ngIf="field.FieldType == fieldsType.FieldOption" (ngModel)="form.option.field.FieldName" name="{{field.FieldNameKey}}" >
                 <ion-option value="opt1" >Option 1</ion-option>
               </ion-select>
-              <ion-toggle *ngIf="field.FieldType == fieldsType.FieldToggle" (ngModel)="form.option.field.FieldName" name="{{field.FieldNameKey}}" checked="" ></ion-toggle>
+              <ion-toggle *ngIf="field.FieldType == fieldsType.FieldToggle" (ngModel)="form.option.field.FieldName" name="{{field.FieldNameKey}}" checked="{{checked}}" ></ion-toggle>
             </ion-col>
           </ion-row>
 
-          <!--<ion-row>-->
-            <!--<ion-col col-4>-->
-              <!--<ion-label></ion-label>-->
-            <!--</ion-col>-->
-            <!--<ion-col col-8>-->
-              <!--<ion-input class="borderInput" name="BladeType"></ion-input>-->
-            <!--</ion-col>-->
-          <!--</ion-row>-->
         </ion-grid>
       </ion-card-content>
     </ion-card>
-
-    <!--<dozing-type *ngIf="item.TemplateName== templates.TemplateDozing"></dozing-type>-->
-    <!--<drilling-type *ngIf="item.TemplateName == templates.TemplateDrilling"></drilling-type>-->
-    <!--<hauling-type *ngIf="item.TemplateName == templates.TemplateHaulingUnit"></hauling-type>-->
-    <!--<loading-type  *ngIf="item.TemplateName == templates.TemplateLoadingUnit"></loading-type>-->
-    <!--<hauling-full-cycle-type *ngIf="item.TemplateName == templates.TemplateHaulingUnitFullCycle"></hauling-full-cycle-type>-->
-    <!--<trenching-excavating-type *ngIf="item.TemplateName == templates.TemplateTrenching"></trenching-excavating-type>-->
-
     <ion-card class="card">
       <ion-card-header>
         <ion-label> Segments </ion-label>

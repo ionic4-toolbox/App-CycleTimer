@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Material } from './Material'
 import { Template } from './Template'
+import {Field} from "./Field";
 
 /*
  Generated class for the BaseProvider provider.
@@ -22,6 +23,7 @@ export class Study {
 
   public Template : Template;
   public TemplateName: string;
+  public ListFields : Array<Field>;
 
   constructor() {
     console.log('Hello BaseProvider Provider');

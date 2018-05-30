@@ -22,6 +22,7 @@ import {Template} from "../../model/Template";
 })
 export class BaseTemplatePage {
 
+  public checked = false;
   public item:any;
   public form:any = {
     template: {},
@@ -30,7 +31,7 @@ export class BaseTemplatePage {
     option: {},
     toggle: {}
   };
-  
+
   public studyDate: any;
   public materialType = [];
   public listSegments = [];
@@ -73,11 +74,9 @@ export class BaseTemplatePage {
   }
 
   getListSegment(){
-    console.log('xxx', this.item.TemplateName);
     console.log(this.constant.TemplatesObject.TemplateDrilling);
 
     this.listSegments = this.database.getListSegmentByTemplateName(this.item.TemplateName);
-
     console.log('List Segment: ', this.listSegments)
   }
 
@@ -86,20 +85,14 @@ export class BaseTemplatePage {
   beginStudy(form, item, listFieldKey){
     this.entityStudy = form.value;
     this.entityStudy.TemplateName = item;
-    console.log('entityStudy :', this.entityStudy)
-    console.log('listFieldKey', listFieldKey);
 
     let keys = [];
-    let Templates = [];
 
     for(let i = 0; i < listFieldKey.length; i++){
       keys.push(listFieldKey[i].FieldNameKey);
-      Templates.push(this.entityStudy[keys[i]]);
 
+      listFieldKey[i].FieldValue = this.entityStudy[keys[i]];
     }
-
-    console.log('key: ',keys)
-    console.log('template: ',Templates)
 
 
     if ( !form.valid || this.entityStudy.StudyName == ''){
@@ -107,7 +100,7 @@ export class BaseTemplatePage {
       this.utilities.alertNotificationErr(this.constant.strBeginStudyErr.title, this.constant.strBeginStudyErr.subTitle)
 
     } else {
-      let checkAddItem = this.database.addItemToStudies(this.entityStudy);
+      let checkAddItem = this.database.addItemToStudies(this.entityStudy, listFieldKey);
       if(!checkAddItem){
         // do something
         this.utilities.alertNotificationErr(this.constant.strAddItemErr.title, this.constant.strAddItemErr.subTitle)
@@ -118,6 +111,5 @@ export class BaseTemplatePage {
     }
 
   }
-
 
 }

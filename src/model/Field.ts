@@ -11,7 +11,7 @@ export class Field {
   public FieldName : string;
   public FieldType : string;
   public FieldValue: string;
-
+  public FieldNameKey : string;
   constructor() {
     console.log('Hello BaseProvider Provider');
   }

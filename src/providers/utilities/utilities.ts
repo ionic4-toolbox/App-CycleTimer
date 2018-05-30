@@ -38,6 +38,12 @@ export class UtilitiesProvider {
     this.emailComposer.open(email);
   }
 
+  create_unique_slug(database_slug_field, title) {
+    let database_filter = {};
+    database_filter[database_slug_field] = title;
+
+    return database_filter;
+  }
 
 
 

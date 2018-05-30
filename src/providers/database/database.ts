@@ -2,6 +2,8 @@ import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { ConstantProvider } from '../constant/constant';
 import {Template} from "../../model/Template";
+import {Study} from "../../model/Study";
+import {Field} from "../../model/Field";
 
 /*
   Generated class for the DatabaseProvider provider.
@@ -12,6 +14,8 @@ import {Template} from "../../model/Template";
 @Injectable()
 export class DatabaseProvider {
   public template : Template;
+  public templatePushToStudy : Template;
+
 
   constructor(public http: Http, private constant : ConstantProvider) {
     console.log('Hello DatabaseProvider Provider');
@@ -44,24 +48,43 @@ export class DatabaseProvider {
     return JSON.parse(localStorage.getItem('study'));
   }
 
-  addItemToStudies(item){
-
+  addItemToStudies(item, listFields){
+    console.log('----------FIELDS PUSH--------', listFields)
+    console.log('----------STUDY PUSH GENERATE-------', item)
     //check if item name exist
     let itemName = item.StudyName;
+    // //
     //
-
     let listStudy = this.getListStudy();
 
     if (listStudy == null){
       listStudy = [];
     }
 
+    let fieldsTemplate = new Array<Field>();
+
+    for(let i=0;i< listFields.length; i++){
+        let fieldObj = new Field();
+        // fieldObj.FieldName = Object.keys(listFields[i])[0];
+        // fieldObj.FieldValue = listFields[i][fieldObj.FieldName];
+        fieldObj = listFields[i];
+        fieldsTemplate.push(fieldObj)
+    }
+    console.log('List Field Template: ', fieldsTemplate)
+
+    let studyObject = new Study();
+    studyObject = item;
+    studyObject.Template =new Template();
+    studyObject.Template.ListFields = fieldsTemplate;
+
+    console.log('Study push To DB: ', studyObject)
+
     for (let i=0; i< listStudy.length; i++){
       if (listStudy[i].StudyName == itemName){
         return false;
       }
     }
-    listStudy.push(item);
+    listStudy.push(studyObject);
     this.saveStudy(JSON.stringify(listStudy));
 
     return true;
