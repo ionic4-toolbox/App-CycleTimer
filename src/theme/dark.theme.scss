@@ -34,7 +34,10 @@
     //border-width: 1px;
     //border-color: white;
   }
-  ion-content,
+  
+  ion-content{
+    background-color: #212121 !important;
+  }
   .input-wrapper,
   .item-inner,
   .item,
@@ -42,19 +45,23 @@
   ion-item,
   ion-label {
     transition: all 1.1s ease;
-    background-color: #303030 !important;
-    background: #303030 !important;
     color: white !important;
   }
+
+  ion-card {
+    background: #424242;
+    border-radius: 15px;
+  }
+
   ion-list {
-    background-color: #100815;
+    background-color: #424242;
   }
   .time {
     background-color: white;
   }
   .item {
     transition: all 1s ease;
-    background-color: #100815;
+    background-color: #424242;
     color: white;
   }
   .range-bar {

@@ -85,6 +85,7 @@ export class BaseTemplatePage {
 
 
   beginStudy(form, item, listFieldKey){
+    console.log('listFieldKey: ', listFieldKey)
     this.entityStudy = form.value;
     this.entityStudy.TemplateName = item;
 

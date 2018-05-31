@@ -42,6 +42,7 @@ import {DrillingTypeComponent} from "../components/drilling-type/drilling-type";
 import {HaulingFullCycleTypeComponent} from "../components/hauling-full-cycle-type/hauling-full-cycle-type";
 import {TrenchingExcavatingTypeComponent} from "../components/trenching-excavating-type/trenching-excavating-type";
 import {HaulingTypeComponent} from "../components/hauling-type/hauling-type";
+import { EndStudyPage } from '../pages/end-study/end-study';
 
 export const components = [
   Timer,
@@ -55,7 +56,7 @@ export const components = [
   DrillingTypeComponent,
   HaulingFullCycleTypeComponent,
   TrenchingExcavatingTypeComponent,
-  HaulingTypeComponent
+  HaulingTypeComponent,
 ];
 
 @NgModule({
@@ -69,6 +70,7 @@ export const components = [
     StudyPage,
     SettingsPage,
     ThemingPage,
+    EndStudyPage,
     components
   ],
   imports: [
@@ -86,7 +88,8 @@ export const components = [
     BaseTemplatePage,
     StudyPage,
     SettingsPage,
-    ThemingPage
+    ThemingPage,
+    EndStudyPage
   ],
   providers: [
     StatusBar,

@@ -57,7 +57,7 @@ export class NewTemplatePage {
   }
 
   cancelNewTemplate(){
-
+    this.navCtrl.pop();
   }
 
   saveNewTemplate(form){

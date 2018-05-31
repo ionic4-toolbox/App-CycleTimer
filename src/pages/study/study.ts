@@ -5,6 +5,7 @@ import { StudyTypePage } from '../study-type/study-type';
 import {Section} from "../../model/Section";
 import {StudyProvider} from "../../providers/study/study";
 import { StudySpilitsModalPage } from '../study-spilits-modal/study-spilits-modal';
+import { EndStudyPage } from '../end-study/end-study';
 
 /**
  * Generated class for the StudyPage page.
@@ -105,7 +106,7 @@ export class StudyPage {
 
   backStudy(){
     // do something
-    this.navCtrl.push(StudyTypePage)
+    this.navCtrl.pop();
   }
 
   pauseStudy(){
@@ -119,6 +120,7 @@ export class StudyPage {
 
   stopStudy(){
     // do something
+    this.navCtrl.push(EndStudyPage);
     console.log('Stop Study');
   }
 

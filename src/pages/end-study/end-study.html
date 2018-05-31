@@ -1,0 +1,49 @@
+<!--
+  Generated template for the EndStudyPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>endStudy</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+  <ion-card>
+    <ion-card-header>
+      <ion-grid>
+        <ion-row>
+          <ion-col col-6 style="font-size: 20px" text-center>
+            Summary
+          </ion-col>
+          <ion-col col-6>
+              <button ion-button outline style="padding: 1em 2em 1em 0em; margin: 0em" (click)="openModalSpilist()">
+                  <ion-row>
+                    <ion-col col-6>
+                      <ion-icon name="clock"></ion-icon>
+                    </ion-col>
+                    <ion-col col-6 style="font-size: 12px" style="padding-left: 0.5em">
+                      Time <br> Spilits
+                    </ion-col>
+                  </ion-row>
+                </button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-header>
+    <ion-card-content>
+      <canvas #barCanvas style="height: 200px;"></canvas>
+      <!-- <canvas id="bar-chart-horizontal" width="800" height="450"></canvas> -->
+
+      
+      <div text-center>
+        <button ion-button round outline (click)="saveEndStudy()">Save</button>
+      </div>
+    </ion-card-content>
+  </ion-card>
+</ion-content>
