@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
-import {IonicPage, NavController, NavParams} from 'ionic-angular';
+import {IonicPage, NavController, NavParams, ModalController} from 'ionic-angular';
 import {ConstantProvider} from "../../providers/constant/constant";
 import { StudyTypePage } from '../study-type/study-type';
 import {Section} from "../../model/Section";
 import {StudyProvider} from "../../providers/study/study";
+import { StudySpilitsModalPage } from '../study-spilits-modal/study-spilits-modal';
 
 /**
  * Generated class for the StudyPage page.
@@ -43,7 +44,8 @@ export class StudyPage {
   public started : boolean;
   timer: CountdownTimer
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private constant : ConstantProvider, private studyProvider: StudyProvider) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private constant : ConstantProvider, 
+    private studyProvider: StudyProvider, public modalCtrl: ModalController) {
     this.studyName = this.navParams.data;
     console.log(this.studyName);
 
@@ -68,6 +70,13 @@ export class StudyPage {
 
   hasFinished() {
     return this.timer.hasFinished;
+  }
+
+  openModalSpilist(){
+    this.openModal('StudySpilitsModalPage', this.listSegments)
+  }
+  openModal(pageName, listSegments) {
+    this.modalCtrl.create(pageName, listSegments).present();
   }
 
   initTimer() {
