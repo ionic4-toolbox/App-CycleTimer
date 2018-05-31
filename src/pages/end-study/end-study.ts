@@ -44,12 +44,25 @@ export class EndStudyPage {
           }]
       },
       options: {
+        // tittle: {
+        //     fontColor: "white",
+        // },
+        // legend: {
+        //     fontColor: "white"
+        // },
           scales: {
               yAxes: [{
                   ticks: {
-                      beginAtZero:true
+                    // fontColor: "white",
+                    beginAtZero:true
                   }
-              }]
+              }],
+              xAxes: [{
+                ticks: {
+                //   fontColor: "white",
+                //   beginAtZero:true
+                }
+            }]
           }
       }
 

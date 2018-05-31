@@ -13,19 +13,16 @@
 </ion-header>
 
 <ion-content padding class="content">
+  
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12 text-center>
+        <button ion-button round outline (click)="onclickNewTemplate()">New Template</button>
+      </ion-col>
+    </ion-row>
     <ion-card>
       <ion-card-header>
-        <ion-grid>
-          <ion-row >
-            <ion-col col-6>
-              <ion-label> Preset Templates </ion-label>
-            </ion-col>
-
-            <ion-col col-6>
-              <button ion-button small round outline (click)="onclickNewTemplate()">New Template</button>
-            </ion-col>
-          </ion-row>
-        </ion-grid>
+        <ion-label> Preset Templates </ion-label>
       </ion-card-header>
       <ion-card-content>
         <button ion-item *ngFor="let item of listStudyType" (click)="itemTapped($event, item)">
@@ -33,4 +30,5 @@
         </button>
       </ion-card-content>
     </ion-card>
+  </ion-grid>
 </ion-content>

@@ -19,14 +19,13 @@
 </ion-header>
 
 
-<ion-content padding class="content">
-  <div text-center>
+<ion-content padding>
+  <div text-center style="margin-bottom: 10px">
     <button ion-button round outline (click)="onclickNewStudy()">New Study</button>
   </div>
-  <ion-list-header>
-    Recent Studies
-  </ion-list-header>
-  
+
+
+  <ion-label>Recent Studies</ion-label>
   <ion-item>
     <ion-label>Search Template</ion-label>
     <ion-select [(ngModel)]="template" (ionChange)="getStudyByTemplateName($event)">
