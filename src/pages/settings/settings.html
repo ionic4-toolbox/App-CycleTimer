@@ -28,7 +28,7 @@
                 <ion-label>Time Units</ion-label>
               </ion-col>
               <ion-col col-5>
-                <ion-toggle></ion-toggle>
+                <ion-toggle checked="{{checkTimeUnit}}" (ionChange)="updateCheckTimeUnit($event)"></ion-toggle>
               </ion-col>
             </ion-row>
 
@@ -36,10 +36,10 @@
               <ion-col col-4>
               </ion-col>
               <ion-col col-4>
-                <ion-label>Minutes/Seconds</ion-label>
+                <ion-label>{{timeUnits.MinutesSeconds}}</ion-label>
               </ion-col>
               <ion-col col-4>
-                <ion-label>Fractional Minutes</ion-label>
+                <ion-label>{{timeUnits.FractionalMinutes}}</ion-label>
               </ion-col>
             </ion-row>
 
@@ -48,7 +48,7 @@
                 <ion-label>Units of Measure</ion-label>
               </ion-col>
               <ion-col col-5>
-                <ion-toggle></ion-toggle>
+                <ion-toggle checked="{{checkUnitOfMeasure}}" (ionChange)="updateCheckUnitMeasure($event)"></ion-toggle>
               </ion-col>
             </ion-row>
 
@@ -56,10 +56,10 @@
               <ion-col col-4>
               </ion-col>
               <ion-col col-4>
-                <ion-label>English</ion-label>
+                <ion-label>{{unitsOfMeasure.English}}</ion-label>
               </ion-col>
               <ion-col col-4>
-                <ion-label>Metric</ion-label>
+                <ion-label>{{unitsOfMeasure.Metric}}</ion-label>
               </ion-col>
             </ion-row>
 

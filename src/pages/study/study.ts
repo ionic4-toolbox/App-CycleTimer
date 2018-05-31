@@ -120,13 +120,11 @@ export class StudyPage {
 
 
   // resumeTimer() {
-
   //   totalPause += timePause;
   //   console.log('time pause: ', timePause)
   //   console.log('total pause: ', totalPause);
   //   this.startTimer();
   // }
-
   timerTick() {
     setTimeout(() => {
       if (!this.timer.runTimer) { return; }

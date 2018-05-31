@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {Option} from "./Option";
 
 /*
  Generated class for the BaseProvider provider.
@@ -12,6 +13,7 @@ export class Field {
   public FieldType : string;
   public FieldValue: string;
   public FieldNameKey : string;
+  public ListOption : Array<Option>;
   constructor() {
     console.log('Hello BaseProvider Provider');
   }

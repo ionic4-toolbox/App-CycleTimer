@@ -1,6 +1,7 @@
 import { Http } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Template } from '../../model/Template';
+import {Option} from "../../model/Option";
 
 /*
   Generated class for the ConstantProvider provider.
@@ -11,12 +12,44 @@ import { Template } from '../../model/Template';
 @Injectable()
 export class ConstantProvider {
 
+  public TimeUnit ={
+    MinutesSeconds : 'Minutes/Seconds',
+    FractionalMinutes : 'Fractional Minutes'
+  }
+
+  public UnitsOfMeasure ={
+    English: 'English',
+    Metric : 'Metric'
+  }
+
   public FieldType ={
     FieldTextBox : 'Textbox',
     FieldNumber : 'Number',
     FieldOption  : 'Option',
     FieldToggle : 'Toggle'
   }
+
+  //------------------- OPTION STUDY --------------------
+  public OptionDrillType = new Array<Option>(
+    {OptionName : 'Option 1'},
+    {OptionName : 'Option 2'},
+    {OptionName : 'Option 3'},
+  );
+
+
+  public OptionMachineManufacturer = new Array<Option>(
+    {OptionName : 'Option 1'},
+    {OptionName : 'Option 2'},
+    {OptionName : 'Option 3'},
+  );
+
+  public OptionMachineModel =new Array<Option>(
+    {OptionName : 'Option 1'},
+    {OptionName : 'Option 2'},
+    {OptionName : 'Option 3'},
+  );
+
+  //--------------------------------------------
 
   public TemplatesObject={
      TemplateDrilling : 'Drilling',
@@ -148,9 +181,9 @@ export class ConstantProvider {
   ]
 
   public ListFieldsDrilling =[
-    {FieldName : 'Drill Type', FieldType: this.FieldType.FieldOption, FieldNameKey: 'DrillType'},
-    {FieldName : 'Machine Manufacturer',FieldType : this.FieldType.FieldOption, FieldNameKey: 'MachineManufacturer'},
-    {FieldName : 'Machine Model', FieldType: this.FieldType.FieldOption, FieldNameKey: 'MachineModel'},
+    {FieldName : 'Drill Type', FieldType: this.FieldType.FieldOption, FieldNameKey: 'DrillType', ListOption: this.OptionDrillType},
+    {FieldName : 'Machine Manufacturer',FieldType : this.FieldType.FieldOption, FieldNameKey: 'MachineManufacturer', ListOption: this.OptionMachineManufacturer},
+    {FieldName : 'Machine Model', FieldType: this.FieldType.FieldOption, FieldNameKey: 'MachineModel',ListOption: this.OptionMachineModel},
     {FieldName : 'Position Mast/Boom', FieldType: this.FieldType.FieldToggle, FieldNameKey: 'PositionMastBoom'},
   ]
 
@@ -169,6 +202,8 @@ export class ConstantProvider {
   public StatusCarry = 'Carry'
   public StatusLeavePit  = 'LeavePit'
   public StatusReEnterPit  = 'ReEnterPit'
+
+
 
 
   constructor(public http: Http) {

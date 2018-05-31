@@ -217,6 +217,23 @@ export class DatabaseProvider {
     return null;
   }
 
+  //-----------------SETTING--------------------
+  saveTimeUnit(data){
+    localStorage.setItem('time-unit',data);
+  }
+
+  getTimeUnit(){
+    return localStorage.getItem('time-unit');
+  }
+
+  saveUnitOfMeasure(data){
+    localStorage.setItem('unit-of-measure',data);
+  }
+
+  getUnitOfMeasure(){
+    return localStorage.getItem('unit-of-measure');
+  }
+
 
 
 }
