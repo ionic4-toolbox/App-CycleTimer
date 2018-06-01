@@ -48,8 +48,17 @@
               <ion-row text-center>
                 {{segment.SectionName}}
               </ion-row>
-              <button ion-button *ngIf="timeInSeconds >= 0" large block clear class="timer-button x-large">{{timer.displayTime}}</button>
+              <button ion-button *ngIf="timeInSeconds >= 0 && (currentSegment) == i" large block clear class="timer-button x-large">{{timer.displayTime}}</button>
+              <button ion-button *ngIf="timeInSeconds >= 0 && (currentSegment) != i" large block clear class="timer-button x-large">{{segment.DisplayTime}}</button>
               <!--<button ion-button *ngIf="!timeInSeconds || timeInSeconds == 0" large block clear class="timer-button">Timer set up incorrectly</button>-->
+
+              <div text-center style="margin-top: 5px">
+                <button *ngIf="(currentSegment == (listSegments.length - 1)) && (i==0); else templateName" ion-button small round outline (click)="recordTime(segment, i)">Record Time</button>
+                <ng-template #templateName>
+                  <button *ngIf="(currentSegment +1) ==i" ion-button small round outline (click)="recordTime(segment, i)">Record Time</button>
+                </ng-template>
+              </div>
+
             </ion-card-header>
           </ion-card>
       <!--<test-timer #timerBeginLoad  [timeInSeconds]="0"></test-timer>-->
@@ -61,9 +70,9 @@
     <!--</div>-->
 
     <ion-footer>
-      <div text-center style="margin-bottom: 5px">
-        <button ion-button round outline (click)="recordTime()">Record Time</button>
-      </div>
+      <!--<div text-center style="margin-bottom: 5px">-->
+        <!--<button ion-button round outline (click)="recordTime()">Record Time</button>-->
+      <!--</div>-->
       <ion-grid>
         <ion-row>
           <ion-col width-25>
@@ -96,3 +105,4 @@
   </form>
 
 </ion-content>
+
