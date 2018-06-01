@@ -9,6 +9,7 @@ import { Injectable } from '@angular/core';
 @Injectable()
 export class Section {
   public SectionName : string;
+  public DisplayTime : string;
   constructor() {
     console.log('Hello BaseProvider Provider');
   }

@@ -24,6 +24,7 @@ export interface CountdownTimer {
 let totalPause =0;
 let timePause =0;
 let processCountTimerPause;
+let processTimerTick;
 
 @IonicPage()
 @Component({
@@ -33,19 +34,15 @@ let processCountTimerPause;
 export class StudyPage {
   public studyName : string;
   public listSegments : Array<Section>;
-
-  public checkActiveLoad : boolean = true;
-  public checkActiveCarry : boolean = false;
-  public checkActiveLeavePit : boolean = false;
-  public checkActiveReEnterPit : boolean = false;
+  public currentSegment : number;
 
   public timeInSeconds: any;
   public timePause: number;
   public checkStatus : string;
   public started : boolean;
-  timer: CountdownTimer
+  timer: CountdownTimer;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private constant : ConstantProvider, 
+  constructor(public navCtrl: NavController, public navParams: NavParams, private constant : ConstantProvider,
     private studyProvider: StudyProvider, public modalCtrl: ModalController) {
     this.studyName = this.navParams.data;
     console.log(this.studyName);
@@ -57,7 +54,11 @@ export class StudyPage {
     this.checkStatus =this.constant.StatusLoad;
 
     this.listSegments = this.studyProvider.getListSegmentByStudyName(this.studyName);
+    this.currentSegment = this.listSegments.length-1;
 
+    for (let i=0; i<this.listSegments.length;i++){
+      this.listSegments[i].DisplayTime = this.getSecondsAsDigitalClock(0);
+    }
     console.log('LIST SEGMENT: ', this.listSegments)
   }
 
@@ -92,16 +93,53 @@ export class StudyPage {
       secondsRemaining: this.timeInSeconds
     };
 
+
     this.timer.displayTime = this.getSecondsAsDigitalClock(this.timer.secondsRemaining);
     console.log('display time: ', this.timer.displayTime)
+
+
   }
 
 
-  recordTime(){
+  recordTime(segment, index){
+    this.currentSegment = index;
+
+    console.log('Segment: '+ index+ ' value: ');
+    console.log(segment)
+
+    if (index != 0){
+      this.listSegments[index -1].DisplayTime = this.timer.displayTime;
+    }
+    if (index ==0){
+
+
+      this.listSegments[this.listSegments.length-1].DisplayTime = this.timer.displayTime;
+
+      for (let i=0; i<this.listSegments.length;i++){
+        this.listSegments[i].DisplayTime = this.getSecondsAsDigitalClock(0);
+      }
+    }
+
+
+    console.log(this.listSegments);
+
+    this.timer = <CountdownTimer>{
+      seconds: this.timeInSeconds,
+      runTimer: false,
+      hasStarted: false,
+      hasFinished: false,
+      secondsRemaining: this.timeInSeconds
+    };
+    this.timer.displayTime = this.getSecondsAsDigitalClock(this.timer.secondsRemaining);
+
+    clearInterval(processTimerTick);
+
     this.timer.hasStarted = true;
     this.timer.runTimer = true;
+
     this.timerTick();
     console.log('Record Time');
+    //this.initTimer();
   }
 
   backStudy(){
@@ -121,7 +159,7 @@ export class StudyPage {
   stopStudy(){
     // do something
     this.navCtrl.push(EndStudyPage);
-    console.log('Stop Study');
+    console.log('Stop StEndStudyPageudy');
   }
 
   delayStudy(){
@@ -137,7 +175,7 @@ export class StudyPage {
   //   this.startTimer();
   // }
   timerTick() {
-    setTimeout(() => {
+    processTimerTick =setTimeout(() => {
       if (!this.timer.runTimer) { return; }
       this.timer.secondsRemaining++;
       this.timer.displayTime = this.getSecondsAsDigitalClock(this.timer.secondsRemaining);
