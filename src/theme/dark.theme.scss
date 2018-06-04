@@ -47,7 +47,7 @@
   .input-wrapper,
   .item-inner,
   .item {
-    background-color: #424242 !important;
+    background-color: darkgray !important;
   }
   ion-footer,
   ion-item,
@@ -61,7 +61,7 @@
     background: #424242;
     border-radius: 15px;
   }
-
+  
   ion-list {
     background-color: #424242;
   }
@@ -72,6 +72,9 @@
     transition: all 1s ease;
     background-color: #212121;
     color: white;
+  }
+  .cardTemplate {
+    background-color: darkgray !important;
   }
   button {
     border-color: rgb(123, 104, 31) !important;

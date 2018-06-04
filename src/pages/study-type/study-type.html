@@ -25,9 +25,16 @@
         <ion-label> Preset Templates </ion-label>
       </ion-card-header>
       <ion-card-content>
-        <button ion-item *ngFor="let item of listStudyType" (click)="itemTapped($event, item)">
+        <ion-card *ngFor="let item of listStudyType" class="cardTemplate">
+          <ion-card-content>
+              <button ion-item (click)="itemTapped($event, item)">
+                  {{item.TemplateName}}
+              </button>
+          </ion-card-content>
+        </ion-card>
+        <!-- <button ion-item *ngFor="let item of listStudyType" (click)="itemTapped($event, item)">
             {{item.TemplateName}}
-        </button>
+        </button> -->
       </ion-card-content>
     </ion-card>
   </ion-grid>
