@@ -62,6 +62,10 @@
     border-radius: 15px;
   }
   
+  ion-footer button {
+    margin: 0 !important;
+  }
+  
   ion-list {
     background-color: #424242;
   }
@@ -73,7 +77,7 @@
     background-color: #212121;
     color: white;
   }
-  
+
   button {
     border-color: rgb(123, 104, 31) !important;
     color:  rgb(213, 196, 124) !important;

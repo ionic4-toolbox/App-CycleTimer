@@ -1,3 +1,4 @@
+import { StudyDelayModalPage } from './../study-delay-modal/study-delay-modal';
 import { Component } from '@angular/core';
 import {IonicPage, NavController, NavParams, ModalController} from 'ionic-angular';
 import {ConstantProvider} from "../../providers/constant/constant";
@@ -42,6 +43,8 @@ export class StudyPage {
   public started : boolean;
   timer: CountdownTimer;
 
+  public dataNote: string;
+
   constructor(public navCtrl: NavController, public navParams: NavParams, private constant : ConstantProvider,
     private studyProvider: StudyProvider, public modalCtrl: ModalController) {
     this.studyName = this.navParams.data;
@@ -82,9 +85,23 @@ export class StudyPage {
 
   openModalSpilist(){
     this.openModal('StudySpilitsModalPage', this.listSegments)
+  };
+
+  openModalDelay(){
+    this.openModal('StudyDelayModalPage', null)
   }
+
   openModal(pageName, listSegments) {
-    this.modalCtrl.create(pageName, listSegments).present();
+    // this.modalCtrl.create(pageName, listSegments)
+    let myModal = this.modalCtrl.create(pageName, listSegments);
+
+    myModal.onDidDismiss(data => {
+      this.dataNote = data.Note;
+
+      console.log('note: ', this.dataNote);
+    })
+
+    myModal.present();
   }
 
   initTimer() {
@@ -162,24 +179,20 @@ export class StudyPage {
   }
 
   delayStudy(){
+
+    this.openModalDelay();
     this.timer.runTimer = false;
 
     clearInterval(processCountTimerPause);
     this.intervalPause();
 
     console.log('Delay Study');
-
   }
 
   stopStudy(){
     // do something
     this.navCtrl.push(EndStudyPage);
     console.log('Stop StEndStudyPageudy');
-  }
-
-  delayStudy(){
-
-    console.log('Delay Study');
   }
 
   timerTick() {
