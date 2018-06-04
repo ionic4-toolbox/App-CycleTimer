@@ -12,6 +12,7 @@ export class Section {
   public SectionName : string;
   public DisplayTime : string;
   public ListTimerDelay : Array<TimerDelay>
+
   constructor() {
     console.log('Hello BaseProvider Provider');
   }

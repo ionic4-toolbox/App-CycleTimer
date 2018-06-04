@@ -18,6 +18,7 @@ export class Template {
   public ListFields: Array<Field>;
   public ListSegment : Array<Section>;
 
+
   constructor() {
     console.log('Hello BaseProvider Provider');
   }

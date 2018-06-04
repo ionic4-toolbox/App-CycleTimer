@@ -169,11 +169,13 @@ export class StudyPage {
     this.navCtrl.pop();
   }
 
+
   resumeTimer() {
     if (this.checkStatusPause == true){
       totalDelay += timeDelay;
       console.log('time delay: ', timeDelay)
       console.log('total delay: ', totalDelay);
+
 
       console.log('current INDEX : ', this.currentSegment);
       let timerDelay = new TimerDelay();

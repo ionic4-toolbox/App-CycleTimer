@@ -158,6 +158,7 @@ export class DatabaseProvider {
 
 
 
+
   //------------- New Template -------------------
   saveNewTemplate(formEntity, textBoxArr, sectionArr){
     let temp1 = new Template();

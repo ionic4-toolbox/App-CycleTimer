@@ -12,6 +12,7 @@ export class TimerDelay {
   public TimerDelayDescription : string;
   public TimerDelayStart : string;
   public TimeDelay : string;
+
   constructor() {
     console.log('Hello BaseProvider Provider');
   }
