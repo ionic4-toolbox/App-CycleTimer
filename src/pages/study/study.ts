@@ -70,6 +70,12 @@ export class StudyPage {
     this.initTimer();
   }
 
+  startTimer() {
+    this.timer.hasStarted = true;
+    this.timer.runTimer = true;
+    this.timerTick();
+  }
+
   hasFinished() {
     return this.timer.hasFinished;
   }
@@ -147,13 +153,22 @@ export class StudyPage {
     this.navCtrl.pop();
   }
 
+  resumeTimer() {
+    this.startTimer();
+  }
+
   pauseStudy(){
+    this.timer.runTimer = false;
+  }
+
+  delayStudy(){
     this.timer.runTimer = false;
 
     clearInterval(processCountTimerPause);
     this.intervalPause();
 
-    console.log('Pause Study');
+    console.log('Delay Study');
+
   }
 
   stopStudy(){
@@ -167,13 +182,6 @@ export class StudyPage {
     console.log('Delay Study');
   }
 
-
-  // resumeTimer() {
-  //   totalPause += timePause;
-  //   console.log('time pause: ', timePause)
-  //   console.log('total pause: ', totalPause);
-  //   this.startTimer();
-  // }
   timerTick() {
     processTimerTick =setTimeout(() => {
       if (!this.timer.runTimer) { return; }

@@ -82,11 +82,17 @@
           </ion-col>
 
           <ion-col width-25>
-            <button ion-button clear (click)="pauseStudy()">
+            <button ion-button clear (click)="pauseStudy()" *ngIf="timer.runTimer && timer.hasStarted && !timer.hasFinished ; else templateResume">
               <ion-icon name="pause" text-center></ion-icon>
             </button>
           </ion-col>
-
+          <ng-template #templateResume>
+            <ion-col width-25>
+              <button ion-button clear (click)="resumeTimer()" *ngIf="!timer.runTimer && timer.hasStarted && !timer.hasFinished">
+                <ion-icon name="play" text-center></ion-icon>
+              </button>
+            </ion-col>
+          </ng-template>
           <ion-col width-25>
             <button ion-button clear (click)="stopStudy()">
               <ion-icon name="square" text-center></ion-icon>
