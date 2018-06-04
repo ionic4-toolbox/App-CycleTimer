@@ -203,6 +203,28 @@ export class ConstantProvider {
   public StatusLeavePit  = 'LeavePit'
   public StatusReEnterPit  = 'ReEnterPit'
 
+  //---------------------SUMMARY-------------------------
+  public listBackgroundColors: any = [
+    { color: '#f04336'  },
+    { color: '#fac135'  },
+    { color: '#fbf132'  },
+    { color: '#92ca58'  },
+    { color: '#4fb152'  },
+    { color: '#38b0f1'  },
+    { color: '#0e6fc0'  },
+    { color: '#01205f'  },
+    { color: '#7645a1'  },
+    { color: '#d9d9d9'  },
+    { color: '#585858'  },
+    { color: '#aeaaaa'  },
+    { color: '#abb8ca'  },
+    { color: '#f8cbac'  },
+    { color: '#dbdbdb'  },
+    { color: '#fee699'  },
+    { color: '#b4c6e7'  },
+    { color: '#c6e1b4'  },
+    { color: '#bf3429'  },
+  ];
 
 
 

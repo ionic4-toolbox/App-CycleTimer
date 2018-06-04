@@ -9,6 +9,7 @@ import { StudySpilitsModalPage } from '../study-spilits-modal/study-spilits-moda
 import { EndStudyPage } from '../end-study/end-study';
 import {TimerDelay} from "../../model/TimerDelay";
 import {DatabaseProvider} from "../../providers/database/database";
+import { UtilitiesProvider } from '../../providers/utilities/utilities';
 
 /**
  * Generated class for the StudyPage page.
@@ -55,7 +56,7 @@ export class StudyPage {
   public checkCanNextCycle: boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private constant : ConstantProvider,
-    private studyProvider: StudyProvider, public modalCtrl: ModalController, private db: DatabaseProvider) {
+    private studyProvider: StudyProvider, public modalCtrl: ModalController, private db: DatabaseProvider, public utilities: UtilitiesProvider) {
     this.studyName = this.navParams.data;
     console.log(this.studyName);
 
@@ -69,7 +70,7 @@ export class StudyPage {
     this.currentSegment = this.listSegments.length-1;
 
     for (let i=0; i<this.listSegments.length;i++){
-      this.listSegments[i].DisplayTime = this.getSecondsAsDigitalClock(0);
+      this.listSegments[i].DisplayTime = this.utilities.getSecondsAsDigitalClock(0);
     }
     console.log('LIST SEGMENT: ', this.listSegments)
   }
@@ -92,13 +93,13 @@ export class StudyPage {
     return this.timer.hasFinished;
   }
 
-  openModalSpilist(){
-    this.openModal('StudySpilitsModalPage', this.listSegments)
-  };
+  // openModalSpilist(){
+  //   this.openModal('StudySpilitsModalPage', this.listSegments)
+  // };
 
-  openModalDelay(){
-      this.openModal('StudyDelayModalPage', null)
-  }
+  // openModalDelay(){
+  //     this.openModal('StudyDelayModalPage', null)
+  // }
 
 
 
@@ -114,7 +115,7 @@ export class StudyPage {
       secondsRemaining: this.timeInSeconds
     };
 
-    this.timer.displayTime = this.getSecondsAsDigitalClock(this.timer.secondsRemaining);
+    this.timer.displayTime = this.utilities.getSecondsAsDigitalClock(this.timer.secondsRemaining);
     console.log('display time: ', this.timer.displayTime)
   }
 
@@ -133,7 +134,7 @@ export class StudyPage {
       //this.listSegments[this.listSegments.length-1].DisplayTime = this.timer.displayTime;
 
       for (let i=0; i<this.listSegments.length;i++){
-        this.listSegments[i].DisplayTime = this.getSecondsAsDigitalClock(0);
+        this.listSegments[i].DisplayTime = this.utilities.getSecondsAsDigitalClock(0);
       }
     }
     if (index == this.listSegments.length -1){
@@ -152,7 +153,7 @@ export class StudyPage {
       hasFinished: false,
       secondsRemaining: this.timeInSeconds
     };
-    this.timer.displayTime = this.getSecondsAsDigitalClock(this.timer.secondsRemaining);
+    this.timer.displayTime = this.utilities.getSecondsAsDigitalClock(this.timer.secondsRemaining);
 
     clearInterval(processTimerTick);
 
@@ -182,7 +183,7 @@ export class StudyPage {
       console.log('data Note: ', this.dataNote)
       timerDelay.TimerDelayDescription = this.dataNote;
       timerDelay.TimerDelayStart = this.timerDelayStart;
-      timerDelay.TimeDelay = this.getSecondsAsDigitalClock(timeDelay);
+      timerDelay.TimeDelay = this.utilities.getSecondsAsDigitalClock(timeDelay);
 
       listTimerDelay.push(timerDelay);
       //console.log('list timer delay: ', listTimerDelay)
@@ -198,22 +199,23 @@ export class StudyPage {
     this.checkStatusPause = false;
   }
 
-  openModal(pageName, listSegments) {
-    // this.modalCtrl.create(pageName, listSegments)
-    let myModal = this.modalCtrl.create(pageName, listSegments);
-    myModal.onDidDismiss(data => {
-      this.dataNote = data.Note;
-    })
+  // openModal(pageName, listSegments) {
+  //   // this.modalCtrl.create(pageName, listSegments)
+  //   let myModal = this.modalCtrl.create(pageName, listSegments);
+  //   myModal.onDidDismiss(data => {
+  //     this.dataNote = data.Note;
+  //   })
 
-    myModal.present();
-  }
+  //   myModal.present();
+  // }
+
   delayStudy(){
 
     let myModal = this.modalCtrl.create('StudyDelayModalPage', null);
     myModal.present();
     myModal.onDidDismiss(data => {
       this.checkStatusPause = true;
-      this.timerDelayStart = this.getSecondsAsDigitalClock(this.timer.secondsRemaining);
+      this.timerDelayStart = this.utilities.getSecondsAsDigitalClock(this.timer.secondsRemaining);
       this.dataNote = data.Note;
 
       console.log('data note: ', this.dataNote);
@@ -229,7 +231,7 @@ export class StudyPage {
 
   stopStudy(){
     // do something
-    this.navCtrl.push(EndStudyPage);
+    this.navCtrl.push(EndStudyPage, this.listSegments);
     console.log('Stop StEndStudyPageudy');
   }
 
@@ -237,27 +239,13 @@ export class StudyPage {
     processTimerTick =setTimeout(() => {
       if (!this.timer.runTimer) { return; }
       this.timer.secondsRemaining++;
-      this.timer.displayTime = this.getSecondsAsDigitalClock(this.timer.secondsRemaining);
+      this.timer.displayTime = this.utilities.getSecondsAsDigitalClock(this.timer.secondsRemaining);
       if (this.timer.secondsRemaining >= 0) {
         this.timerTick();
       } else {
         this.timer.hasFinished = true;
       }
     }, 1000);
-  }
-
-  getSecondsAsDigitalClock(inputSeconds: number) {
-    const secNum = parseInt(inputSeconds.toString(), 10); // don't forget the second param
-    const hours = Math.floor(secNum / 3600);
-    const minutes = Math.floor((secNum - (hours * 3600)) / 60);
-    const seconds = secNum - (hours * 3600) - (minutes * 60);
-    let hoursString = '';
-    let minutesString = '';
-    let secondsString = '';
-    hoursString = (hours < 10) ? '0' + hours : hours.toString();
-    minutesString = (minutes < 10) ? '0' + minutes : minutes.toString();
-    secondsString = (seconds < 10) ? '0' + seconds : seconds.toString();
-    return hoursString + ':' + minutesString + ':' + secondsString;
   }
 
   intervalPause(){
@@ -275,10 +263,7 @@ export class StudyPage {
     console.log(this.listSegments);
 
     this.db.pushTimerToStudy(this.listSegments, this.studyName);
-
     this.checkCanNextCycle= false;
-
-
     this.pauseStudy();
 
   }

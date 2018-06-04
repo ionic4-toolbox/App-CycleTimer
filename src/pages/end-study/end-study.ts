@@ -1,7 +1,8 @@
 import { Component, ViewChild } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-// import { Chart } from 'chart.js'
+import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angular';
 import { HomePage } from '../home/home';
+import { UtilitiesProvider } from '../../providers/utilities/utilities';
+import { ConstantProvider } from '../../providers/constant/constant';
 
 /**
  * Generated class for the EndStudyPage page.
@@ -16,44 +17,15 @@ import { HomePage } from '../home/home';
   templateUrl: 'end-study.html',
 })
 export class EndStudyPage {
-  // @ViewChild('barCanvas') barCanvas;
 
-  // barChart: any;
+  public summary: any = [];
 
-  public listBackgroundColors: any = [
-    { color: '#f04336'  },
-    { color: '#fac135'  },
-    { color: '#fbf132'  },
-    { color: '#92ca58'  },
-    { color: '#4fb152'  },
-    { color: '#38b0f1'  },
-    { color: '#0e6fc0'  },
-    { color: '#01205f'  },
-    { color: '#7645a1'  },
-    { color: '#d9d9d9'  },
-    { color: '#585858'  },
-    { color: '#aeaaaa'  },
-    { color: '#abb8ca'  },
-    { color: '#f8cbac'  },
-    { color: '#dbdbdb'  },
-    { color: '#fee699'  },
-    { color: '#b4c6e7'  },
-    { color: '#c6e1b4'  },
-    { color: '#bf3429'  },
-  ];
-
-  public summary: any = [
-    {SectionName : 'Begin Load', displayTime: 45},
-    {SectionName : 'Begin Carry', displayTime: 36},
-    {SectionName : 'Leave Pit', displayTime: 105},
-    {SectionName : 'ReEnter Pit', displayTime: 86},
-  ];
-
-
+  public listBackgroundColors: any = [];
   public totalTime: number = 0;
   public totalTimeStr: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public utilities: UtilitiesProvider
+    , public modalCtrl: ModalController, public constant: ConstantProvider) {
 
   }
 
@@ -63,35 +35,52 @@ export class EndStudyPage {
   }
 
   init(){
+    this.summary = this.navParams.data;
+    this.listBackgroundColors = this.constant.listBackgroundColors;
 
     for(let i = 0; i < this.summary.length; i++){
-      this.totalTime += parseFloat(this.summary[i].displayTime) ;
+      this.totalTime += this.getSecondsToClock(this.summary[i].DisplayTime);
     }
+
     this.totalTimeStr = this.timeFormat(this.totalTime);
 
     for(let i = 0; i < this.summary.length ; i++){
       this.summary[i].color = this.listBackgroundColors[i].color;
-      this.summary[i].ratio = (parseFloat(this.summary[i].displayTime)/(this.totalTime))*100;
-      this.summary[i].time = this.timeFormat(parseFloat(this.summary[i].displayTime));
+      this.summary[i].ratio = (this.getSecondsToClock(this.summary[i].DisplayTime)/(this.totalTime))*100;
+      this.summary[i].time = this.timeFormat(this.getSecondsToClock(this.summary[i].DisplayTime));
     }
     console.log('Summary: ', this.summary);
   }
 
-  timeFormat(totalSeconds){
-    let str: string;
+  timeFormat(totalSeconds: number){
 
     let minutes = Math.floor(totalSeconds/60);
     let seconds = Math.round((totalSeconds/60 - minutes)*60);
 
-    str = minutes + ':' + seconds;
-    console.log('Time: ' ,str)
+    return minutes + ':' + seconds
+  }
 
-    return str
+  getSecondsToClock(time: string){
+    let hours = parseInt(time.slice(0,2));
+    let minutes = parseInt(time.slice(3,5));
+    let seconds = parseInt(time.slice(6,8));
+
+    let totolSeconds = 0;
+    totolSeconds =  hours*3600 + minutes*60 + seconds;
+
+    console.log('totolSeconds: ', totolSeconds);
+    return totolSeconds;
   }
 
   openModalSpilist(){
 
   }
+
+  // openModal(pageName, listSegments) {
+  //     // this.modalCtrl.create(pageName, listSegments)
+  //     let myModal = this.modalCtrl.create(pageName, listSegments);
+  //     myModal.present();
+  //   }
 
   saveEndStudy(){
     this.navCtrl.push(HomePage)
