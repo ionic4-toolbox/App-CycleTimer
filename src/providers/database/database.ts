@@ -135,6 +135,27 @@ export class DatabaseProvider {
     return null;
   }
 
+  getStudyByStudyName(studyName){
+    let listStudy = this.getListStudy();
+    for (let i=0;i< listStudy.length; i++){
+      if (listStudy[i].StudyName == studyName){
+        return listStudy[i];
+      }
+    }
+    return null;
+  }
+
+  pushTimerToStudy(listSegment, studyName){
+    let listStudy = this.getListStudy();
+    for (let i=0;i< listStudy.length; i++){
+      if (listStudy[i].StudyName == studyName){
+        listStudy[i].Template.ListSegment = listSegment;
+        this.saveStudy(JSON.stringify(listStudy));
+        return;
+      }
+    }
+  }
+
 
 
   //------------- New Template -------------------

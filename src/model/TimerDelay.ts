@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import {TimerDelay} from "./TimerDelay";
 
 /*
  Generated class for the BaseProvider provider.
@@ -8,10 +7,11 @@ import {TimerDelay} from "./TimerDelay";
  and Angular DI.
  */
 @Injectable()
-export class Section {
-  public SectionName : string;
-  public DisplayTime : string;
-  public ListTimerDelay : Array<TimerDelay>
+export class TimerDelay {
+  public TimerDelayName : string;
+  public TimerDelayDescription : string;
+  public TimerDelayStart : string;
+  public TimeDelay : string;
   constructor() {
     console.log('Hello BaseProvider Provider');
   }

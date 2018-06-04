@@ -61,6 +61,9 @@
 
             </ion-card-header>
           </ion-card>
+      <button ion-button round outline *ngIf="(currentSegment == (listSegments.length - 1)) && checkCanNextCycle == true" (click)="nextCycle()">
+        Next Cycle
+      </button>
       <!--<test-timer #timerBeginLoad  [timeInSeconds]="0"></test-timer>-->
 
     </ion-scroll>
