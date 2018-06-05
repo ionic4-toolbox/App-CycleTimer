@@ -45,7 +45,7 @@ export class UtilitiesProvider {
     return database_filter;
   }
 
-  
+
 
   getSecondsAsDigitalClock(inputSeconds: number) {
     const secNum = parseInt(inputSeconds.toString(), 10); // don't forget the second param
@@ -62,6 +62,13 @@ export class UtilitiesProvider {
     return hoursString + ':' + minutesString + ':' + secondsString;
   }
 
+  convertStringTimerToSeconds(displayTimer){
+    let arrUnit = [];
+    arrUnit = displayTimer.split(':');
 
+    let seconds = parseInt(arrUnit[0])*60*60  + parseInt(arrUnit[1])*60 + parseInt(arrUnit[2]);
+
+    return seconds;
+  }
 
 }

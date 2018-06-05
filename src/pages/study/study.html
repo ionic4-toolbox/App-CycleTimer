@@ -79,7 +79,7 @@
       <ion-grid>
         <ion-row>
           <ion-col width-25>
-            <button ion-button clear (click)="backStudy()">
+            <button *ngIf="(checkCanBackSegment==true)" ion-button clear (click)="backStudy()">
               <ion-icon name="arrow-back" text-center></ion-icon>
             </button>
           </ion-col>

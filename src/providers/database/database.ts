@@ -182,13 +182,9 @@ export class DatabaseProvider {
         return false;
       }
     }
-
-    console.log('CODE CONTINUTES')
     listTemplate.push(this.template);
     console.log('List Template: ', listTemplate)
-    console.log('BBBBBBBBBBBBb')
     this.setTemplate(JSON.stringify(listTemplate));
-    console.log('CCCCCCCCCCCcc')
     return true;
   }
 
