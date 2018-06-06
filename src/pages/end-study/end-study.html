@@ -7,7 +7,14 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Study 1</ion-title>
+    <ion-title>{{studyName}}</ion-title>
+
+
+  <ion-buttons end>
+      <button ion-button (click)="backHome()">
+        <ion-icon name="home"></ion-icon>
+      </button>
+    </ion-buttons>
   </ion-navbar>
 
 </ion-header>

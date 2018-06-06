@@ -78,7 +78,7 @@
               <ion-label style="white-space: pre-wrap;">Material Type</ion-label>
             </ion-col>
             <ion-col col-7>
-              <ion-select class="borderInput" style="max-width: 100%;" [(ngModel)]="form.MaterialType" name="MaterialType">
+              <ion-select class="borderInput" [(ngModel)]="form.MaterialType" name="MaterialType">
                 <ion-option *ngFor="let material of materialType">{{material.MaterialName}}</ion-option>
               </ion-select>
             </ion-col>

@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Material } from './Material'
 import { Template } from './Template'
-import {Field} from "./Field";
+import { Field } from "./Field";
+import { Cycle } from "./Cycle";
 
 /*
  Generated class for the BaseProvider provider.
@@ -20,6 +21,7 @@ export class Study {
   public LoadingUnit : string;
   public Blast : string;
   public BladeType : string;
+  public ListCycle :  Array<Cycle>;
 
   public Template : Template;
   public TemplateName: string;

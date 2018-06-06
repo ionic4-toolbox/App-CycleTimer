@@ -3,7 +3,9 @@ import { IonicPage, NavController, NavParams, ModalController } from 'ionic-angu
 import { HomePage } from '../home/home';
 import { UtilitiesProvider } from '../../providers/utilities/utilities';
 import { ConstantProvider } from '../../providers/constant/constant';
-
+import { StudySpilitsModalPage } from './../study-spilits-modal/study-spilits-modal';
+import { Template } from './../../model/Template';
+import { DatabaseProvider } from './../../providers/database/database';
 /**
  * Generated class for the EndStudyPage page.
  *
@@ -23,9 +25,11 @@ export class EndStudyPage {
   public listBackgroundColors: any = [];
   public totalTime: number = 0;
   public totalTimeStr: string;
+  public listStudyByName: any;
+  public studyName: string;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public utilities: UtilitiesProvider
-    , public modalCtrl: ModalController, public constant: ConstantProvider) {
+    , public modalCtrl: ModalController, public constant: ConstantProvider, public database: DatabaseProvider) {
 
   }
 
@@ -35,7 +39,11 @@ export class EndStudyPage {
   }
 
   init(){
-    this.summary = this.navParams.data;
+    this.studyName = this.navParams.data;
+    this.listStudyByName = this.database.getStudyByStudyName(this.studyName)
+
+    this.summary = this.listStudyByName.Template.ListSegment;
+    console.log(this.summary);
     this.listBackgroundColors = this.constant.listBackgroundColors;
 
     for(let i = 0; i < this.summary.length; i++){
@@ -57,13 +65,20 @@ export class EndStudyPage {
     let minutes = Math.floor(totalSeconds/60);
     let seconds = Math.round((totalSeconds/60 - minutes)*60);
 
-    return minutes + ':' + seconds
+    let minutesString = '';
+    let secondsString = '';
+
+    minutesString = minutes.toString();
+    secondsString = (seconds < 10) ? '0' + seconds : seconds.toString();
+
+    return minutesString + ':' + secondsString
   }
 
   getSecondsToClock(time: string){
     let hours = parseInt(time.slice(0,2));
     let minutes = parseInt(time.slice(3,5));
     let seconds = parseInt(time.slice(6,8));
+    
 
     let totolSeconds = 0;
     totolSeconds =  hours*3600 + minutes*60 + seconds;
@@ -73,14 +88,14 @@ export class EndStudyPage {
   }
 
   openModalSpilist(){
-
+    let myModal = this.modalCtrl.create('StudySpilitsModalPage', { 'studyName': this.studyName });
+    myModal.present();
   }
 
-  // openModal(pageName, listSegments) {
-  //     // this.modalCtrl.create(pageName, listSegments)
-  //     let myModal = this.modalCtrl.create(pageName, listSegments);
-  //     myModal.present();
-  //   }
+  backHome(){
+    this.navCtrl.push(HomePage)
+  }
+
 
   saveEndStudy(){
     this.navCtrl.push(HomePage)

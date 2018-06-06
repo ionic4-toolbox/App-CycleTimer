@@ -47,7 +47,7 @@
 
   .text-input {
     margin: 11px 8px 11px 8px;
-    color: black !important;
+    color: white !important;
   }
   .input-wrapper,
   .item-inner,
@@ -65,6 +65,10 @@
   ion-card {
     background: #424242;
     border-radius: 15px;
+  }
+
+  ion-select {
+    max-width: 100%;
   }
 
   ion-footer button {

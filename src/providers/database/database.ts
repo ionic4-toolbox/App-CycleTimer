@@ -156,6 +156,17 @@ export class DatabaseProvider {
     }
   }
 
+  pushTimerToStudy1(listCycle, studyName){
+    let listStudy = this.getListStudy();
+    for (let i=0;i< listStudy.length; i++){
+      if (listStudy[i].StudyName == studyName){
+        listStudy[i].ListCycle = listCycle;
+        this.saveStudy(JSON.stringify(listStudy));
+        return;
+      }
+    }
+  }
+
 
 
 

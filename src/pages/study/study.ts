@@ -1,3 +1,4 @@
+import { Template } from './../../model/Template';
 import {StudyDelayModalPage} from './../study-delay-modal/study-delay-modal';
 import {Component} from '@angular/core';
 import {IonicPage, NavController, NavParams, ModalController, Note} from 'ionic-angular';
@@ -40,6 +41,7 @@ let tempStudyTimer = [];
 export class StudyPage {
   public studyName: string;
   public listSegments: Array<Section>;
+  public listCycle: any = [];
   public currentSegment: number;
   public tempTimeFirstSegment: string;
 
@@ -219,11 +221,16 @@ export class StudyPage {
   stopStudy() {
     this.listSegments[this.currentSegment].DisplayTime = this.timer.displayTime;
     console.log(this.listSegments);
+    
+    
+
+
     this.pauseStudy();
     this.db.pushTimerToStudy(this.listSegments, this.studyName);
 
+    this.db.pushTimerToStudy1(this.listCycle, this.studyName);
     // do something
-    this.navCtrl.push(EndStudyPage, this.listSegments);
+    this.navCtrl.push(EndStudyPage, this.studyName);
     console.log('Stop StEndStudyPageudy');
   }
 
@@ -250,10 +257,26 @@ export class StudyPage {
   }
 
   nextCycle() {
+
+    let dataSegment: any = [];
+    let listStudy: any;
+    
     this.listSegments[this.listSegments.length - 1].DisplayTime = this.timer.displayTime;
     console.log(this.listSegments);
 
+    // this.listCycle.push(this.listSegments)
+    // console.log('this.listCycle: ', this.listCycle)
+
     this.db.pushTimerToStudy(this.listSegments, this.studyName);
+    // this.db.pushTimerToStudy(this.listCycle, this.studyName);
+
+    listStudy = this.db.getStudyByStudyName(this. studyName);
+    this.listCycle.push(listStudy.Template.ListSegment);
+
+    // this.listCycle.push(dataSegment);
+    
+    console.log('this.listCycle: ', this.listCycle);
+
     this.checkCanNextCycle = false;
     this.pauseStudy();
   }

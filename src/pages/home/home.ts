@@ -32,9 +32,8 @@ export class HomePage {
   public to ='';
   // public sort: any;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private homeProvider: HomeProvider, private database: DatabaseProvider,
-    private utils: UtilitiesProvider,
-    public actionSheetCtrl: ActionSheetController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, private homeProvider: HomeProvider, private db: DatabaseProvider,
+    private utils: UtilitiesProvider, public actionSheetCtrl: ActionSheetController) {
       this.initHome();
   }
 
@@ -44,8 +43,8 @@ export class HomePage {
 
   initHome(){
     this.listStudy = this.homeProvider.getListStudy();
-    //let arrTemplate =  this.database.getListTemplate();
-    this.listTemplate = this.database.getListTemplate();
+    //let arrTemplate =  this.db.getListTemplate();
+    this.listTemplate = this.db.getListTemplate();
     // this.sort = {TemplateName: 'Dozing'}
 
     this.listTemplate.unshift({TemplateName: 'All'});
@@ -78,6 +77,11 @@ export class HomePage {
             return false;
           }
         }, {
+          text: 'Send Mail',
+          handler: () => {
+            this.sendEmail(study, ev)
+          }
+        }, {
           text: 'Cancel',
           role: 'cancel',
           handler: () => {
@@ -90,8 +94,8 @@ export class HomePage {
   }
 
   deleteItem(study,ev){
-    this.database.deleteItemFromStudies(study.StudyName);
-    this.listStudy = this.database.getListStudy();
+    this.db.deleteItemFromStudies(study.StudyName);
+    this.listStudy = this.db.getListStudy();
   }
 
   getStudyByTemplateName(templateName){
@@ -105,6 +109,25 @@ export class HomePage {
 
   onclickNewStudy(){
     this.navCtrl.push(StudyTypePage)
+  }
+
+  filterStudyName(ev: any){
+
+    let val = ev.target.value;
+    this.listStudy = this.db.getListStudy();
+    console.log(this.listStudy);
+
+    if(!this.listStudy){
+      return;
+    }
+
+
+    if (val && val.trim() !== '') {
+      this.listStudy = this.listStudy.filter(function(listStudy) {
+        return listStudy.StudyName.toLowerCase().includes(val.toLowerCase()) || listStudy.TemplateName.toLowerCase().includes(val.toLowerCase());
+      });
+    }
+    
   }
 
   sendEmail(study,ev){

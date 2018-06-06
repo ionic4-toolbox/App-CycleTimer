@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Template } from './../../model/Template';
+import { DatabaseProvider } from './../../providers/database/database';
 import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
 
 /**
@@ -17,13 +19,20 @@ export class StudySpilitsModalPage {
 
 
   public listSegments: any;
+  public listStudyByName: any;
+  public studyName: string;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController) {
+  constructor(public navCtrl: NavController, public navParams: NavParams, public viewCtrl: ViewController, public database: DatabaseProvider) {
     this.init();
   }
 
   init(){
-    this.listSegments = this.navParams.data;
+    this.studyName = this.navParams.get('studyName');
+    console.log('studyName:', this.studyName)
+
+    this.listStudyByName = this.database.getStudyByStudyName(this.studyName);
+    this.listSegments = this.listStudyByName.Template.ListSegment;
+
     console.log(this.listSegments);
   }
 
